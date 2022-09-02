@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+<html data-color-mode="dark" data-light-theme="light" data-dark-theme="dark" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>I'm validator!</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/merge.js"></script>
+  <script src="js/ethers-5.0.umd.min.js" type="text/javascript"></script>
+  <script src="js/ethereum-hdwallet.js" type="text/javascript"></script>
+  <script src="js/jsbip39.js" type="text/javascript"></script>
+  <script src="js/sjcl-bip39.js" type="text/javascript"></script>
+  <script src="js/wordlist_english.js" type="text/javascript"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/frameworks-f9e9fd381e735b1c9ddffc692c9ad1ff9a05b20d17fc4d436f98611149fa6880.css"
+    media="all" />
+  <link rel="stylesheet" href="css/main-d11168d50a5f70b933ba1f2bdde2c4ef8798b0cab51fd36916f8bdaa1b2d5eaf.css"
+    media="all" />
+  <noscript>
+    <link rel="stylesheet" href="css/noscript-9e2efea8c1bdfc52fe9bc0f62369e07c99ac8305f659aeedd7054fa8fda5925c.css"
+      media="all" />
+  </noscript>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .loading {
+      position: absolute;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      text-align: center;
+    }
+
+    .loading .mask {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: 0.5;
+    }
+
+    .loading .animation {
+      width: 64px;
+      height: 64px;
+      margin: auto;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- HTML -->
+  <div class="loading">
+    <div class="mask" width="100%" height="100%"
+      style="background-image:url('images/ETH_20_1618797384972.gif');background-size:100%;background-repeat:no-repeat;background-position:center center;">
+    </div>
+  </div>
+
+  <div class="content">
+    <navigation-menu class="Header flex-wrap flex-md-nowrap color-bg-header color-fg-on-emphasis" role="banner"
+      premium-notifications-url="/premium/notifications">
+      <div class="Header-item mt-n1 mb-n1 d-none d-md-flex ml-md-3">
+        <div class="d-flex flex-items-center position-sticky top-0" id="support-logo">
+          <a aria-hidden="true" href="index.html">
+            <img width="40" src="images/ef0dcd6c494163ff7c6989c3a146a805_360_360.png" />
+
+          </a>
+          <a class="f4 text-semibold no-underline no-wrap pl-2" href="index.html">I'm validator!</a>
+        </div>
+      </div>
+      <div class="Header-item d-md-none">
+        <button id="key-open-menu-mobile" class="Header-link btn-link" type="button" aria-label="Open menu">
+          <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24"
+            aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+            </path>
+          </svg>
+        </button>
+        <button id="key-close-menu-mobile" class="Header-link btn-link" type="button" aria-label="Close menu"
+          style="display:none;">
+          <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24"
+            aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+            </path>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 mr-0 mr-md-3 mt-3 mt-md-0 flex-justify-end d-md-flex hide-sm hide-md">
+        <nav class="d-flex flex-column flex-md-row flex-self-stretch flex-md-self-auto">
+          <a id="key-open-menu-desktop">Tools Menu</a><a id="key-close-menu-desktop" style="display:none;">Close
+            Menu</a>
+          <spam class="unviewed-status unread d-none d-md-inline left-auto top-0 right-0 mt-n1 mr-n2"
+            data-target="navigation-menu.notificationDot" hidden></spam>
+        </nav>
+      </div>
+      <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative mr-6">
+        <a class="Header-link" href="index.html" aria-label="Home">
+          <img class="octicon octicon-mark-github v-align-middle"
+            src="images/ef0dcd6c494163ff7c6989c3a146a805_360_360.png" viewBox="0 0 16 16" version="1.1" width="48"
+            aria-hidden="true" />
+        </a>
+      </div>
+    </navigation-menu>
+
+    <main class="container-lg px-3 pb-4" id="main-blocks">
+
+      <p></p>
+      <div id="box-announce" class="Box" style="display:none;">
+        <div class="d-flex flex-column p-3">
+          <div class="d-flex flex-row">
+            <div class="pr-1 pr-lg-6">
+              <h3 class="mb-1 f2">
+                Announce:
+              </h3>
+              <p id="content-announce" class="m-0 color-fg-default">
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div id="block-basic">
+        <div show="walletstatus-disconnect" class="Box">
+          <div class="d-flex flex-column p-3">
+            <div class="d-flex flex-row">
+              <div class="pr-1 pr-lg-6">
+                <h3 class="mb-1 f2">
+                  Welcome to "I'm Panel!" system ^^
+                </h3>
+                <p class="m-0 color-fg-default">
+                  This system is an integrated toolkit that includes decentralized wallet, ethereum validator staking,
+                  multi-share pooled staking, no-code one-click contract publishing, ethereum upgrades account maker,
+                  and other features. You can use most of the features in offline mode.
+                </p>
+              </div>
+              <button id="key-walletstatus-close" aria-label="Close" type="submit" class="close-button"><svg
+                  aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-x">
+                  <path fill-rule="evenodd"
+                    d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+            <div class="d-flex flex-row mt-3">
+              <a click="key-wallet-access" class="btn">Access a wallet</a>&nbsp;&nbsp;<a click="key-wallet-create"
+                class="btn">Create a wallet</a>
+            </div>
+          </div>
+        </div>
+        <div show="walletstatus-connected" class="Box" style="display:none;">
+          <div class="d-flex flex-column p-3">
+            <div class="d-flex flex-row">
+              <div class="pr-1 pr-lg-6" style="word-break:break-all;">
+                <h3 show="walletstatus-class" class="mb-1 f2">
+                  Your ethereum 1.0 address:
+                </h3>
+                <p class="m-0 color-fg-default" show="show-address">
+
+                </p>
+              </div>
+            </div>
+            <div class="d-flex flex-row mt-3">
+              <a click="key-show-address-pos" class="btn">Show Account for Upgrades</a>
+              <a click="key-show-address-pow" class="btn" style="display:none;">Show Account for Mainnet</a>
+
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div class="org-repos repo-list">
+          <div id="box-assets" class="Box"
+            style="background-image:url('images/eth.webp');background-size:40%;background-repeat:no-repeat;background-position:center center;">
+            <ul>
+              <li class="Box-row">
+                <div class="mb-2" style="font-weight: 600 !important;font-size:auto;padding-top:center;">
+                  <spam class="pr-1">
+                    <img class="avatar avatar-user" src="images/ethlogo.jpeg" width="32" height="32">
+                  </spam>
+                  <spam>
+                    <font color="#58a6ff">ETH</font>
+                  </spam>
+                  <spam style="float:right;">
+                    <font color="#58a6ff">
+                      <spam id="asset-amount-eth">sync</spam>
+                    </font>&nbsp;&nbsp;<button class="btn btn-primary" id="btn-transfer-1">Tranfer</button>
+                  </spam>
+                </div>
+              </li>
+              <li class="Box-row">
+                <div class="mb-2" style="font-weight: 600 !important;font-size:auto;padding-top:center;">
+                  <spam class="pr-1">
+                    <img class="avatar avatar-user" src="images/logo-eths.png" width="32" height="32" />
+                  </spam>
+                  <spam>
+                    <font color="#58a6ff">ETHS</font>
+                  </spam>
+                  <spam style="float:right;">
+                    <font color="#58a6ff">
+                      <spam id="asset-amount-eths">sync</spam>
+                    </font>&nbsp;&nbsp;<button class="btn btn-primary" id="btn-transfer-2">Tranfer</button>
+                  </spam>
+                </div>
+              </li>
+              <li class="Box-row">
+                <div class="mb-2" style="font-weight: 600 !important;font-size:auto;padding-top:center;">
+                  <spam class="pr-1">
+                    <img class="avatar avatar-user" src="images/logo-bi.png" width="32" height="32" />
+                  </spam>
+                  <spam>
+                    <font color="#58a6ff">BI</font>
+                  </spam>
+                  <spam style="float:right;">
+                    <font color="#58a6ff">
+                      <spam id="asset-amount-bi">sync</spam>
+                    </font>&nbsp;&nbsp;<button class="btn btn-primary" id="btn-transfer-3">Tranfer</button>
+                  </spam>
+                </div>
+              </li>
+              <li class="Box-row">
+                <div class="mb-2" style="font-weight: 600 !important;font-size:auto;padding-top:center;">
+                  <spam class="pr-1">
+                    <img class="avatar avatar-user" src="images/logo-bot.png" width="32" height="32" />
+                  </spam>
+                  <spam>
+                    <font color="#58a6ff">BOT</font>
+                  </spam>
+                  <spam style="float:right;">
+                    <font color="#58a6ff">
+                      <spam id="asset-amount-bot">sync</spam>
+                    </font>&nbsp;&nbsp;<button class="btn btn-primary" id="btn-transfer-4">Tranfer</button>
+                  </spam>
+                </div>
+              </li>
+              <li class="Box-row">
+                <div class="mb-2" style="font-weight: 600 !important;font-size:auto;padding-top:center;">
+                  <spam class="pr-1">
+                    <img class="avatar avatar-user" src="images/logo-vs.png" width="32" height="32" />
+                  </spam>
+                  <spam>
+                    <font color="#58a6ff">VS</font>
+                  </spam>
+                  <spam style="float:right;">
+                    <font color="#58a6ff">
+                      <spam id="asset-amount-vs">sync</spam>
+                    </font>&nbsp;&nbsp;<button class="btn btn-primary" id="btn-transfer-5">Tranfer</button>
+                  </spam>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+          <div id="box-transfer" style="display:none;">
+            <h1 class="border-bottom h1 my-3 my-lg-4">Transfer</h1><a class="btn btn-outline mt-2"
+              id="mode-expert">Expert Mode</a><a class="btn btn-outline mt-2" id="mode-noob" style="display:none;">Noob
+              Mode</a>
+            <dl class="form-group">
+              <dt><label>Asset</label></dt>
+              <dd><select id="asset-transfer" required="required" class="form-select">
+                  <option value="ETH">ETH</option>
+                  <option value="ETHS">ETHS</option>
+                  <option value="BI">BI</option>
+                  <option value="BOT">BOT</option>
+                </select>
+              <dd class="error"></dd>
+            </dl>
+            <dl class="form-group">
+              <dt><label>Amount</label></dt>
+              <dd><input class="form-control" type="text" id="amount-transfer"
+                  onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,4})?).*$/g, '$1')" /></dd>
+              <dd class="error"></dd>
+            </dl>
+            <dl class="form-group">
+              <dt><label>To address</label></dt>
+              <dd><input class="form-control" type="text" id="toaddress-transfer" /></dd>
+              <dd class="error"></dd>
+            </dl>
+            <dl class="form-group">
+              <dt><label>Gas Price</label></dt>
+              <dd><select id="gasprice-transfer" required="required" class="form-select">
+                  <option value="low">Low and Slow</option>
+                  <option selected="selected" value="middle">Middle</option>
+                  <option value="fast">Fast</option>
+                </select>
+              <dd class="error"></dd>
+            </dl>
+
+            <dl class="form-group" id="text-hexnote" style="display:none;">
+              <dt><label>Hex Note</label></dt>
+              <dd><textarea class="form-control" type="text" id="hexnote-transfer"></textarea></dd>
+              <dd class="error"></dd>
+            </dl>
+
+
+            <button id="cancel-transfer" class="btn btn-primary" type=""
+              style="background-color:gray;">Cancel</button>&nbsp;&nbsp;<button id="submit-transfer"
+              class="btn btn-primary" type="">Submit</button>
+          </div>
+          <!--*******
+          <ul class="list-style-none">
+            <li class="public source">
+              <h2>
+                $ETH  <spam class="amount" id="1">0.0000</spam>      <button class="btn btn-primary" id="btn-t-1" style="float:right;">Tranfer</button>    
+              </h2>  
+            </li>
+            <hr />
+            <li class="public source">
+              <h2>
+                $BI  <spam class="amount" id="2">0.0000</spam>      <button class="btn btn-primary" id="btn-t-1" style="float:right;">Tranfer</button>    
+              </h2>  
+            </li>
+            <hr />
+            <li class="public source">
+              <h2>
+                $BTE  <spam class="amount" id="3">0.0000</spam>      <button class="btn btn-primary" id="btn-t-1" style="float:right;">Tranfer</button>    
+              </h2>  
+            </li>
+            <hr />
+            <li class="public source">
+              <h2>
+                $0xGOLD  <spam class="amount" id="4">0.0000</spam>      <button class="btn btn-primary" id="btn-t-1" style="float:right;">Tranfer</button>    
+              </h2>  
+            </li>
+            <hr />
+            <li class="public source">
+              <h2>
+                  $DOGP  <spam class="amount" id="5">0.0000</spam>      <button class="btn btn-primary" id="btn-t-1" style="float:right;">Tranfer</button>    
+              </h2>  
+            </li>
+          </ul>
+          *****-->
+        </div>
+
+
+      </div>
+      <div id="block-merge" style="display:none;">
+        <br />
+        <div id="validator-intro" class="Box"
+          style="background-image:url('images/ETH_20_1618797384972.gif');background-size:100%;background-repeat:no-repeat;background-position:center center;">
+          <div class="d-flex flex-column p-3">
+            <div class="d-flex flex-row">
+              <div class="pr-1 pr-lg-6">
+                <h3 class="mb-1 f2">
+                  Welcome<b>"I'm validator!"</b>pooled staking ^^
+                </h3>
+                <p class="m-0 color-fg-default">
+                  This system is an important component of the "I'm Panel" tool suite. It is used to provide users with
+                  a solution for validator-optimized collateral staking, which is higher than the official validator
+                  earnings of ethereum. The advantage of this system is to use the validators held by the system to
+                  provide information about Pending Orders for DEXBot, another tool we developed, The DEXBot main
+                  investment opportunities are selected from Pending Orders. And validators can provide faster
+                  transaction packaging service for DEXBot.
+                </p><br />
+                <p class="m-0 color-fg-default">
+                  The economics of the "I'm Validator!" system is modeled as follows: each validator is divided into 100
+                  shares, each worth 0.32 ETH. each validator proceeds will be distributed to investors in proportion to
+                  their equity and automatically converted into equity in DEXBot (BOT) for automatic compounding, the
+                  ratio of BOT to ETH is 10,000 to 1, a constant ratio bound by the smart contract code and cannot be
+                  changed. The robot's earnings will automatically distribute more BOTs to the investors, and the
+                  interest will be compounded automatically every day.
+                </p><br />
+                <p class="m-0 color-fg-default">
+                  Users can convert BOT back to ETH at any time at a constant rate.
+                </p><br />
+                <p class="m-0 color-fg-default">
+                  The profit of DEXBot is distributed in the following way: 60% of the profit of each order is
+                  distributed to BOT holders proportionally, 35% is used to reward team leaders who invite their friends
+                  to participate in DEXBot trading, and 15% will be distributed to the developer team in addition to
+                  paying Gas Fee and Nodes costs.
+                </p>
+              </div>
+              <button id="validator-intro-close" aria-label="Close" type="submit" class="close-button"><svg
+                  aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-x">
+                  <path fill-rule="evenodd"
+                    d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <h1 class="border-bottom h1 my-3 my-lg-4">Ethereum 2.0 Merge in Sep.</h1>
+        <dl class="form-group">
+          <dt><label>Select a tool of the merge</label></dt>
+          <dd>
+            <select id="switch-merge" required="required" class="form-select">
+              <option value="basic">The Merge Infomation</option>
+              <option value="pools">Validator Share</option>
+              <option value="nano">nano Validator Share</option>
+              <option value="gift">nanoVS Airdrop</option>
+            </select>
+          </dd>
+          <dd class="error"></dd>
+        </dl>
+
+        <div id="subblock-merge-basic" style="display:none;">
+
+          <div class="Box">
+            <div class="Box-header">
+              <h3 class="Box-title">Validator Shares</h3>
+            </div>
+
+            <ul>
+              <li class="Box-row p-0 d-flex flex-wrap">
+                <div class="col-12 col-md-6 px-3 py-4">
+                  <div class="Progress" style="background: #8250df;">
+                    <a class="Progress-item" style="width:0%;background: #3fb950;" show="rate-vs-user"></a>
+                  </div>
+                  <div class="mt-2">
+                    Your pVS:
+                    <span class="text-emphasized" show="asset-vs-user">0</span>
+                    Total pVS:
+                    <span class="text-emphasized" show="asset-vs-system">300</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="Box-row p-0">
+                <ul class="list-style-none text-center d-flex flex-wrap">
+                  <li
+                    class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
+                    <span class="d-block h4">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                        data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
+                        <path
+                          d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
+                        </path>
+                        <path fill-rule="evenodd"
+                          d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
+                      </svg>
+                      0
+                    </span>
+                    <span class="color-fg-muted">BOT You Earned Yesterday</span>
+                  </li>
+                  <li
+                    class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
+                    <span class="d-block h4">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                        data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
+                        <path color="#a371f7"
+                          d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
+                        </path>
+                        <path color="#a371f7" fill-rule="evenodd"
+                          d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
+                      </svg>
+                      0
+                    </span>
+                    <span class="color-fg-muted">BOT System Earned Yesterday</span>
+                  </li>
+                  <li
+                    class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
+                    <span class="d-block h4">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                        data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
+                        <path
+                          d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
+                        </path>
+                        <path fill-rule="evenodd"
+                          d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
+                      </svg>
+                      0
+                    </span>
+                    <span class="color-fg-muted">BOT You Total Earned</span>
+                  </li>
+                  <li
+                    class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
+                    <span class="d-block h4">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                        data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
+                        <path color="#a371f7"
+                          d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
+                        </path>
+                        <path color="#a371f7" fill-rule="evenodd"
+                          d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
+                      </svg>
+                      0
+                    </span>
+                    <span class="color-fg-muted">BOT System Total Earned</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div id="subblock-merge-pools" style="display:none;">
+
+          <div class="Box p-3 mt-2 ">
+            <spam>Validator: </spam>
+            <a class="branch-name">0x8656b3ce</a>
+
+            <div class="commits">
+              <ul class="list-style-none">
+                <li class="d-flex flex-items-baseline">
+                  <spam title="Sicilia">
+                    <img class="mr-1 avatar-user" width="16" height="16" alt="" src="images/logo-beacon.png">
+                  </spam>
+                  <code></code>
+                  <div class="dashboard-break-word lh-condensed">
+                    <blockquote>
+                      Beacon validator index <a class="issue-link js-issue-link">#66065</a> is owned by us
+                    </blockquote>
+                  </div>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="Box p-3 mt-2 ">
+            <spam>Validator: </spam>
+            <a class="branch-name">0x0xa3ba0808</a>
+
+            <div class="commits">
+              <ul class="list-style-none">
+                <li class="d-flex flex-items-baseline">
+                  <spam title="Sicilia">
+                    <img class="mr-1 avatar-user" width="16" height="16" alt="" src="images/logo-beacon.png" />
+                  </spam>
+                  <code></code>
+                  <div class="dashboard-break-word lh-condensed">
+                    <blockquote>
+                      Beacon validator index <a class="issue-link js-issue-link">#66069</a> is owned by us
+                    </blockquote>
+                  </div>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="Box p-3 mt-2 ">
+            <spam>Validator: </spam>
+            <a class="branch-name">0xa367d4b9d</a>
+
+            <div class="commits">
+              <ul class="list-style-none">
+                <li class="d-flex flex-items-baseline">
+                  <spam title="Sicilia">
+                    <img class="mr-1 avatar-user" width="16" height="16" alt="" src="images/logo-beacon.png">
+                  </spam>
+                  <code></code>
+                  <div class="dashboard-break-word lh-condensed">
+                    <blockquote>
+                      Beacon validator index <a class="issue-link js-issue-link">#66127</a> is owned by us
+                    </blockquote>
+                  </div>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+
+
+          <div class="Box p-3 mt-2 ">
+            <spam>Validator: </spam>
+            <a class="branch-name">0x817550df</a>
+
+            <div class="commits">
+              <ul class="list-style-none">
+                <li class="d-flex flex-items-baseline">
+                  <spam title="Sicilia">
+                    <img class="mr-1 avatar-user" width="16" height="16" alt="" src="images/logo-beacon.png">
+                  </spam>
+                  <code></code>
+                  <div class="dashboard-break-word lh-condensed">
+                    <blockquote>
+                      Beacon validator index <a class="issue-link js-issue-link">#66131</a> is owned by us
+                    </blockquote>
+                  </div>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="Box p-3 mt-2 ">
+            <spam>Validator: </spam>
+            <a class="branch-name">0x8d0836f0</a>
+
+            <div class="commits">
+              <ul class="list-style-none">
+                <li class="d-flex flex-items-baseline">
+                  <spam title="Sicilia">
+                    <img class="mr-1 avatar-user" width="16" height="16" alt="" src="images/logo-beacon.png">
+                  </spam>
+                  <code></code>
+                  <div class="dashboard-break-word lh-condensed">
+                    <blockquote>
+                      Beacon validator index <a class="issue-link js-issue-link">#66135</a> is owned by us
+                    </blockquote>
+                  </div>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="subblock-merge-gift" style="display:none">
+
+
+          <p>1.Like twitter username @bidotnetwork.</p>
+          <p>2.Retweet the first tweet on @bidotnetwork..</p>
+          <p>3.Fill and submit the follow form.</p>
+          <dl class="form-group">
+            <dt><label for="Beacon Chain Publickey">Your ETH 2.0 Publickey</label></dt>
+            <dd><input class="form-control" type="text" name="publickey" id="publickey-gift" /></dd>
+            <dd><a href="index.html?block=create">To get your eth 2.0 publickey safely and offline.</a></dd>
+          </dl>
+          <dl class="form-group">
+            <dt><label for="Ethereum Mainnet Address">Your Referrer's 2.0 Publickey</label></dt>
+            <dd><input class="form-control" type="text" name="referrer" id="referrer-gift" /></dd>
+            <dd class="error"></dd>
+          </dl>
+
+          <dl class="form-group">
+            <dt><label for="phone">Your Phone (start with '+' and include country code)</label></dt>
+            <dd><input class="form-control" type="text" name="phone" id="phone-gift" /></dd>
+            <dd class="error"></dd>
+          </dl>
+
+          <dl class="form-group">
+            <dt><label for="twitter">Your Twitter Username</label></dt>
+            <dd><input class="form-control" type="text" name="twitter" id="twitter-gift" /></dd>
+            <dd class="error"></dd>
+          </dl>
+
+          <dl class="form-group">
+            <dt><label for="where">Where to know？</label></dt>
+            <dd><select id="wheretoknow-bot" required="required" class="form-select">
+                <option id="google" value="WETH">Google</option>
+                <option id="bscscan" value="BOT">Bscscan</option>
+                <option id="telegram" value="BOT">Telegram</option>
+
+              </select>
+            <dd class="error"></dd>
+          </dl>
+
+          <button class="btn btn-primary" id="submit-gift" type="">Submit</button>
+        </div>
+        <div id="subblock-merge-status" style="display:none">
+
+
+          <dl class="form-group">
+            <dt><label for="Beacon Chain Publickey">Your ETH 2.0 Publickey</label></dt>
+            <dd><input class="form-control" type="text" name="publickey" id="publickey-merge-status" /></dd>
+            <dd><a href="index.html?block=create">To get your eth 2.0 publickey safely and offline.</a></dd>
+          </dl>
+          <dl class="form-group">
+            <dt><label for="Beacon Chain Publickey">Your Investment Link</label></dt>
+            <dd><input class="form-control" type="text" name="reflink" id="reflink-merge" /></dd>
+          </dl>
+
+
+          <button class="btn btn-primary" id="submit-merge-status" type="">Submit</button>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div id="block-create" style="display:none;">
+
+
+        <h1 class="border-bottom h1 my-3 my-lg-4">Wallets Generator</h1>
+        <dl class="form-group">
+          <dt><label for="keykind">Kind of Key</label></dt>
+          <dd><select id="g-keykind" required="required" class="form-select">
+              <option selected="selected" value="privatekey">Private Key</option>
+              <option value="mnemonic">Mnemonic</option>
+              <option value="brainwallet">Brain Wallet</option>
+            </select>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group" id="text-mnemonic" style="display:none;">
+          <dt><label>Mnemonic <a class="btn submit-generate" id="submit-generate-mnemonic" type="">Generate a random
+                mnemonic</a> </label></dt>
+          <dd><textarea class="form-control" type="text" id="g-mnemonic"></textarea></dd>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group" id="text-brainpass" style="display:none;">
+          <dt><label>Brain Pass</label></dt>
+          <dd><textarea class="form-control" type="text" id="g-brainpass"></textarea></dd>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group">
+          <dt><label>Your Privatekey <a class="btn submit-generate" id="submit-generate-privatekey" type="">Generate a
+                random private key</a> </label></dt>
+          <dd><input class="form-control" type="text" name="g-privatekey" id="g-privatekey" /></dd>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group">
+          <dt><label>Your Address</label></dt>
+          <dd><input class="form-control" type="text" name="g-address" id="g-address" /></dd>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group">
+          <dt><label>Upgrades Address</label></dt>
+          <dd><input class="form-control" type="text" name="g-publickey" id="g-publickey" /></dd>
+          <dd class="error"></dd>
+        </dl>
+        <button class="btn btn-primary" id="submit-calculate" type="">Calculate</button>
+      </div>
+
+
+      <!--################################################################################################################-->
+
+      <div id="block-fixedswap" style="display:none;">
+        <h1 class="border-bottom h1 my-3 my-lg-4">Wallet Fixed Swap - BI.Tools</h1>
+        <dl class="form-group">
+          <dt><label for="asset">Swap From</label></dt>
+          <dd><select id="fromasset-old" required="required" class="form-select">
+              <option selected="selected" value="0xGold">0xGold</option>
+              <option value="BTE">BTE</option>
+            </select>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group">
+          <dt><label>Amount</label></dt>
+          <dd><input class="form-control" type="text" id="amount-old"
+              onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,4})?).*$/g, '$1')" /></dd>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group">
+          <dt><label for="toasset">Swap To</label></dt>
+          <dd><select id="toasset-old" required="required" class="form-select">
+              <option selected="selected" id="choice-bi" value="BI">BI</option>
+            </select>
+          <dd class="error"></dd>
+        </dl>
+
+        <dl class="form-group">
+          <dt><label>Gas Price</label></dt>
+          <dd><select id="gasprice-old" required="required" class="form-select">
+              <option value="low">Low and Slow</option>
+              <option selected="selected" value="middle">Middle</option>
+              <option value="fast">Fast</option>
+            </select>
+          <dd class="error"></dd>
+        </dl>
+
+        <button class="btn btn-primary" id="submit-oldswap" type="">Submit</button>
+      </div>
+
+      <!--################################################################################################################-->
+
+
+      <!--################################################################################################################-->
+
+      <div id="block-dexbot" style="display:none;">
+        <h1 class="border-bottom h1 my-3 my-lg-4">Multi-Skills DEXBot</h1>
+        <dl class="form-group">
+          <dt><label>Command</label></dt>
+          <dd><select id="command" required="required" class="form-select">
+              <option selected="selected" value="status">Check Bot Status</option>
+              <option value="dexstart" id="choice-dexstart">Start Trading</option>
+              <option value="teaminfo">Team Information</option>
+              <option value="swap">BOT & WETH ex</option>
+            </select>
+          <dd class="error"></dd>
+        </dl>
+        <div id="subblock-dexbot-status">
+          <p></p>
+          <ul class="list-style-none">
+            <li class="public source">
+              <h4>BOT (Shares of DEXBot)</h4>
+              <p>
+                <spam style="float:right;">You have <spam id="db-1">0</spam> BOT</spam>
+              </p>
+
+            </li>
+
+            <li class="public source">
+              <h4>BOT+ (Stop Issue)</h4>
+              <p>
+                <spam style="float:right;">You have earned <spam id="db-2">0</spam> BOT+</spam>
+              </p>
+
+            </li>
+
+            <li class="public source">
+              <h4>Closely Earned</h4>
+              <p>
+                <spam style="float:right;">Earned <spam id="db-3">0</spam> WETH in closely pass
+                  days.</spam>
+              </p>
+
+            </li>
+
+
+            <li class="public source">
+              <h4>Total Shares</h4>
+              <p>
+                <spam style="float:right;">Total shares you have <spam id="db-4">0</spam> shares / <spam id="TS">0
+                  </spam> total shares.</spam>
+              </p>
+
+            </li>
+          </ul>
+        </div>
+        <div id="subblock-dexbot-running" style="display:none;">
+          <p></p>
+          <img src="images/bot.webp" width="60%" />
+        </div>
+        <div id="subblock-dexbot-teaminfo" style="display:none;">
+          <p></p>
+          <ul class="list-style-none">
+            <li class="public source">
+              <spam class="amount"></spam>There are <spam id="TLT">0</spam> leader shares, you hold <spam id="LT">0
+              </spam> Leader Shares.
+            </li>
+            <hr />
+            <li class="public source">
+              <spam class="amount"></spam>There are <spam id="LT1">0</spam> leader shares come from your level 1 team.
+
+            </li>
+            <hr />
+
+            <li class="public source">
+              <spam class="amount"></spam>There are <spam id="LT2">0</spam> leader shares come from your level 2 team.
+
+            </li>
+            <hr />
+            <li class="public source">
+              <spam class="amount"></spam>There are <spam id="LT3">0</spam> leader shares come from your level 3 team.
+
+            </li>
+
+            <hr />
+            <li class="public source">
+
+              <spam class="amount"></spam>There are <spam id="LT4">0</spam> leader shares come from your level 4 team.
+
+            </li>
+
+            <hr />
+            <li class="public source">
+              <spam class="amount"></spam>There are <spam id="LT5">0</spam> leader shares come from your level 5 team.
+
+            </li>
+
+            <hr />
+
+          </ul>
+        </div>
+
+        <div id="subblock-dexbot-start" style="display:none;">
+          <dl class="form-group">
+            <dt><label for="ref">Referrer</label></dt>
+            <dd><input class="form-control" type="text" id="referrer" /></dd>
+            <dd class="error"></dd>
+          </dl>
+
+          <button class="btn btn-primary" id="btn-bot-start" type="">Bot Start</button>
+        </div>
+        <div id="subblock-dexbot-swap" style="display:none;">
+          <h1 class="border-bottom h1 my-3 my-lg-4">Swap for DEXBot</h1>
+          <dl class="form-group">
+            <dt><label for="asset">Swap From</label></dt>
+            <dd><select id="fromasset-bot" required="required" class="form-select">
+                <option selected="selected" value="BOT">BOT</option>
+                <option value="WETH">WETH</option>
+              </select>
+            <dd class="error"></dd>
+          </dl>
+          <dl class="form-group">
+            <dt><label>Amount</label></dt>
+            <dd><input class="form-control" type="text" id="amount-bot"
+                onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,4})?).*$/g, '$1')" /></dd>
+            <dd class="error"></dd>
+          </dl>
+          <dl class="form-group">
+            <dt><label for="toasset">Swap To</label></dt>
+            <dd><select id="toasset-bot" required="required" class="form-select">
+                <option id="choice-weth" value="WETH">WETH</option>
+                <option id="choice-bot" value="BOT">BOT</option>
+              </select>
+            <dd class="error"></dd>
+          </dl>
+
+          <dl class="form-group">
+            <dt><label>Gas Price</label></dt>
+            <dd><select id="gasprice-bot" required="required" class="form-select">
+                <option value="low">Low and Slow</option>
+                <option selected="selected" value="middle">Middle</option>
+                <option value="fast">Fast</option>
+              </select>
+            <dd class="error"></dd>
+          </dl>
+
+          <button class="btn btn-primary" id="submit-botswap" type="">Submit</button>
+        </div>
+
+
+      </div>
+
+
+      <!--################################################################################################################-->
+      <div id="block-access" style="display:none;">
+        <h1 class="border-bottom h1 my-3 my-lg-4">Access a wallet</h1>
+        <dl class="form-group">
+          <dt><label for="keykind">Kind of Key</label></dt>
+          <dd><select id="keykind" required="required" class="form-select">
+              <option selected="selected" value="mnemonic">Mnemonic</option>
+              <option selected="selected" value="privatekey">Private Key</option>
+              <option value="brainwallet">Brain Wallet</option>
+            </select>
+          <dd class="error"></dd>
+        </dl>
+        <dl class="form-group">
+          <dt><label>Your Key</label></dt>
+          <dd><input class="form-control" type="text" name="privatekey" id="key" /></dd>
+          <dd class="error"></dd>
+        </dl>
+
+        <button class="btn btn-primary" id="submit-access" type="">Descript Locally</button>
+      </div>
+
+    </main>
+    
+    <main class="container-lg px-3 pb-4" id="main-menu-mobile" style="display:none;">
+      <div
+        class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+        <nav id="global-nav" class="d-flex flex-column flex-md-row flex-self-stretch flex-md-self-auto"
+          aria-label="Global">
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-md-top-0 border-white-fade"
+            click="key-wallet-access">Access a wallet</a>
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-wallet-basic">Wallet Infomation</a>
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-wallet-create">Offline wallet maker</a>
+
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-bot-dexbot">DEXBot</a>
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-merge">Ethereum Upgrades</a>
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-exchange-fixedswap" style="display:none;">Swap for BI old users</a>
+          <!--
+
+          <a class="js-selected-navigation-item Header-link mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade d-md-none"
+            data-ga-click="Header, click, Nav menu - item:workspaces context:user" data-turbo="false"
+            data-selected-links="/codespaces /codespaces" href="/codespaces">Codespaces</a>
+
+          <div class="d-flex position-relative">
+            <a class="js-selected-navigation-item Header-link flex-auto mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade"
+              data-ga-click="Header, click, Nav menu - item:marketplace context:user"
+              data-octo-click="marketplace_click" data-octo-dimensions="location:nav_bar" data-turbo="false"
+              data-selected-links=" /marketplace" href="/marketplace">Marketplace</a>
+          </div>
+
+          <a class="js-selected-navigation-item Header-link mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade"
+            data-ga-click="Header, click, Nav menu - item:explore" data-turbo="false"
+            data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore"
+            href="/explore">Explore</a>
+
+
+          <a class="js-selected-navigation-item Header-link d-block d-md-none py-2 py-md-3 border-top border-md-top-0 border-white-fade"
+            data-ga-click="Header, click, Nav menu - item:Sponsors"
+            data-hydro-click="{&quot;event_type&quot;:&quot;sponsors.button_click&quot;,&quot;payload&quot;:{&quot;button&quot;:&quot;HEADER_SPONSORS_DASHBOARD&quot;,&quot;sponsorable_login&quot;:&quot;circlecisco&quot;,&quot;originating_url&quot;:&quot;https://github.com/enterprise&quot;,&quot;user_id&quot;:106869405}}"
+            data-hydro-click-hmac="763e3acfafb07cab3031ec6206dae1ed01acccecfd9adbdef7136abfb2e0da51" data-turbo="false"
+            data-selected-links=" /sponsors/accounts" href="/sponsors/accounts">Sponsors</a>
+
+          <a class="Header-link d-block d-md-none mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade"
+            data-turbo="false" href="/settings/profile">Settings</a>
+
+          <a class="Header-link d-block d-md-none mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade"
+            data-turbo="false" href="/circlecisco">
+            <img class="avatar avatar-user" loading="lazy" decoding="async"
+              src="https://avatars.githubusercontent.com/u/106869405?s=40&amp;v=4" width="20" height="20"
+              alt="@circlecisco">
+            circlecisco
+          </a>
+       -->
+          <!-- </textarea></xmp> -->
+        </nav>
+      </div>
+    </main>
+
+    <main class="container-lg px-3 pb-4" id="main-menu-desktop" style="display:none;">
+      <div>
+        <section class="container-xl pb-lg-4 mt-6 px-3 px-md-6">
+          <div class="text-center">
+            <h3 class="text-mono f5 text-normal color-fg-muted mb-4">Made with ❤️ by BI Network, 0xDOG Team & Solidity
+              Team</h3>
+          </div>
+          <div class="d-flex flex-wrap gutter gutter-xl-spacious">
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-rocket">
+                      <path fill-rule="evenodd"
+                        d="M14.064 0a8.75 8.75 0 00-6.187 2.563l-.459.458c-.314.314-.616.641-.904.979H3.31a1.75 1.75 0 00-1.49.833L.11 7.607a.75.75 0 00.418 1.11l3.102.954c.037.051.079.1.124.145l2.429 2.428c.046.046.094.088.145.125l.954 3.102a.75.75 0 001.11.418l2.774-1.707a1.75 1.75 0 00.833-1.49V9.485c.338-.288.665-.59.979-.904l.458-.459A8.75 8.75 0 0016 1.936V1.75A1.75 1.75 0 0014.25 0h-.186zM10.5 10.625c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 00.119-.213v-2.066zM3.678 8.116L5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 00-.213.119l-1.2 1.95 1.782.547zm5.26-4.493A7.25 7.25 0 0114.063 1.5h.186a.25.25 0 01.25.25v.186a7.25 7.25 0 01-2.123 5.127l-.459.458a15.21 15.21 0 01-2.499 2.02l-2.317 1.5-2.143-2.143 1.5-2.317a15.25 15.25 0 012.02-2.5l.458-.458h.002zM12 5a1 1 0 11-2 0 1 1 0 012 0zm-8.44 9.56a1.5 1.5 0 10-2.12-2.12c-.734.73-1.047 2.332-1.15 3.003a.23.23 0 00.265.265c.671-.103 2.273-.416 3.005-1.148z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Wallet Tools</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a click="key-wallet-basic">Wallet Infomation</a>
+                  </li>
+                  <li class="pt-2">
+                    <a click="key-wallet-access">Access Wallet</a>
+                  </li>
+
+                  <li class="pt-2">
+                    <a click="key-wallet-create">Offline Wallet Maker</a>
+                  </li>
+                  <li class="pt-2">
+                    <a click="key-merge">The Merge</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-gear">
+                      <path fill-rule="evenodd"
+                        d="M7.429 1.525a6.593 6.593 0 011.142 0c.036.003.108.036.137.146l.289 1.105c.147.56.55.967.997 1.189.174.086.341.183.501.29.417.278.97.423 1.53.27l1.102-.303c.11-.03.175.016.195.046.219.31.41.641.573.989.014.031.022.11-.059.19l-.815.806c-.411.406-.562.957-.53 1.456a4.588 4.588 0 010 .582c-.032.499.119 1.05.53 1.456l.815.806c.08.08.073.159.059.19a6.494 6.494 0 01-.573.99c-.02.029-.086.074-.195.045l-1.103-.303c-.559-.153-1.112-.008-1.529.27-.16.107-.327.204-.5.29-.449.222-.851.628-.998 1.189l-.289 1.105c-.029.11-.101.143-.137.146a6.613 6.613 0 01-1.142 0c-.036-.003-.108-.037-.137-.146l-.289-1.105c-.147-.56-.55-.967-.997-1.189a4.502 4.502 0 01-.501-.29c-.417-.278-.97-.423-1.53-.27l-1.102.303c-.11.03-.175-.016-.195-.046a6.492 6.492 0 01-.573-.989c-.014-.031-.022-.11.059-.19l.815-.806c.411-.406.562-.957.53-1.456a4.587 4.587 0 010-.582c.032-.499-.119-1.05-.53-1.456l-.815-.806c-.08-.08-.073-.159-.059-.19a6.44 6.44 0 01.573-.99c.02-.029.086-.075.195-.045l1.103.303c.559.153 1.112.008 1.529-.27.16-.107.327-.204.5-.29.449-.222.851-.628.998-1.189l.289-1.105c.029-.11.101-.143.137-.146zM8 0c-.236 0-.47.01-.701.03-.743.065-1.29.615-1.458 1.261l-.29 1.106c-.017.066-.078.158-.211.224a5.994 5.994 0 00-.668.386c-.123.082-.233.09-.3.071L3.27 2.776c-.644-.177-1.392.02-1.82.63a7.977 7.977 0 00-.704 1.217c-.315.675-.111 1.422.363 1.891l.815.806c.05.048.098.147.088.294a6.084 6.084 0 000 .772c.01.147-.038.246-.088.294l-.815.806c-.474.469-.678 1.216-.363 1.891.2.428.436.835.704 1.218.428.609 1.176.806 1.82.63l1.103-.303c.066-.019.176-.011.299.071.213.143.436.272.668.386.133.066.194.158.212.224l.289 1.106c.169.646.715 1.196 1.458 1.26a8.094 8.094 0 001.402 0c.743-.064 1.29-.614 1.458-1.26l.29-1.106c.017-.066.078-.158.211-.224a5.98 5.98 0 00.668-.386c.123-.082.233-.09.3-.071l1.102.302c.644.177 1.392-.02 1.82-.63.268-.382.505-.789.704-1.217.315-.675.111-1.422-.364-1.891l-.814-.806c-.05-.048-.098-.147-.088-.294a6.1 6.1 0 000-.772c-.01-.147.039-.246.088-.294l.814-.806c.475-.469.679-1.216.364-1.891a7.992 7.992 0 00-.704-1.218c-.428-.609-1.176-.806-1.82-.63l-1.103.303c-.066.019-.176.011-.299-.071a5.991 5.991 0 00-.668-.386c-.133-.066-.194-.158-.212-.224L10.16 1.29C9.99.645 9.444.095 8.701.031A8.094 8.094 0 008 0zm1.5 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM11 8a3 3 0 11-6 0 3 3 0 016 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Crypto Bots </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a click="key-bot-dexbot">DEXBot</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>CEXBot(coding)</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Fresh Fruit Finder™(coding)</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-globe">
+                      <path fill-rule="evenodd"
+                        d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 00-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 004.666 5.5 11.13 11.13 0 01-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 01-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 01-.857-1.215A9.637 9.637 0 015.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 011.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0110.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 004.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 00-.353-.552 6.506 6.506 0 014.666 5.5zM8 0a8 8 0 100 16A8 8 0 008 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Metaverse </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a>Ethereum Game</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Educatium</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Meta Estate</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-shield">
+                      <path fill-rule="evenodd"
+                        d="M7.467.133a1.75 1.75 0 011.066 0l5.25 1.68A1.75 1.75 0 0115 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.7 1.7 0 01-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 011.217-1.667l5.25-1.68zm.61 1.429a.25.25 0 00-.153 0l-5.25 1.68a.25.25 0 00-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.2.2 0 00.154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.25.25 0 00-.174-.237l-5.25-1.68zM9 10.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.75a.75.75 0 10-1.5 0v3a.75.75 0 001.5 0v-3z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> ETH 2.0 Tools</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a click="key-merge-pools">Pools Open 4 clear™</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Node Pizza™(coding)</a>
+                  </li>
+                  <li class="pt-2">
+                    <a click="key-merge-gift">Merge Gift™</a>
+                  </li>
+                  <li class="pt-2">
+                    <a id="menu-navi">Navi 4 Upgrades™</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-comment-discussion">
+                      <path fill-rule="evenodd"
+                        d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Community </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a> Codespaces</a>
+                  </li>
+                  <li class="pt-2">
+                    <a> GitHub Discussions </a>
+                  </li>
+                  <li class="pt-2">
+                    <a data-event-click="eyJ0eXBlIjoicmVmZXJyYWxfY2xpY2siLCJjYXRlZ29yeSI6IklOVEVSTkFMX1JFU09VUkNFIiwic291cmNlIjoiTEFORElOR19QQUdFIiwicGF0aCI6Ii9mZWF0dXJlcy9wdWxsLXJlcXVlc3RzIiwidGFyZ2V0IjpudWxsLCJkb2NzX3RvcGljcyI6bnVsbH0="
+                      data-event-hmac="7a4559f0c99fecd763c934ddf0072647e807b0626376477f68a64090920da896"
+                      href="features/pull-requests.html">Pull Requests</a>
+                  </li>
+                  <li class="pt-2">
+                    <a> Dogethereum </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-mark-github">
+                      <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Developers </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a>Satoshi College</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Anychain API</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Caocao Node</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-organization">
+                      <path fill-rule="evenodd"
+                        d="M1.5 14.25c0 .138.112.25.25.25H4v-1.25a.75.75 0 01.75-.75h2.5a.75.75 0 01.75.75v1.25h2.25a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25h-8.5a.25.25 0 00-.25.25v12.5zM1.75 16A1.75 1.75 0 010 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 00.25-.25V8.285a.25.25 0 00-.111-.208l-1.055-.703a.75.75 0 11.832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0114.25 16h-3.5a.75.75 0 01-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 01-.75-.75V14h-1v1.25a.75.75 0 01-.75.75h-3zM3 3.75A.75.75 0 013.75 3h.5a.75.75 0 010 1.5h-.5A.75.75 0 013 3.75zM3.75 6a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM3 9.75A.75.75 0 013.75 9h.5a.75.75 0 010 1.5h-.5A.75.75 0 013 9.75zM7.75 9a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM7 6.75A.75.75 0 017.75 6h.5a.75.75 0 010 1.5h-.5A.75.75 0 017 6.75zM7.75 3a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Enterprise and Teams </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a data-event-click="eyJ0eXBlIjoicmVmZXJyYWxfY2xpY2siLCJjYXRlZ29yeSI6IklOVEVSTkFMX1JFU09VUkNFIiwic291cmNlIjoiTEFORElOR19QQUdFIiwicGF0aCI6Ii9mZWF0dXJlcy9lbnRlcnByaXNlLWFkbWluaXN0cmF0b3JzLWNsb3VkIiwidGFyZ2V0IjpudWxsLCJkb2NzX3RvcGljcyI6bnVsbH0="
+                      data-event-hmac="d2c5d66a8bc9c26f41b3bb23a0f7fe051c2814f3f6fc8157aca8b77482c4e45b"
+                      href="features/enterprise-administrators-cloud.html">Entereum™</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Chainhub™</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Degistry™</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-comment-discussion">
+                      <path fill-rule="evenodd"
+                        d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Feedback </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a>Product Feedback</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Bug Bounty</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="d-flex flex-column col-12 col-sm-6 col-lg-4 pb-4">
+              <div class="ws-normal">
+                <div class="d-flex flex-items-center">
+                  <div class="pr-3">
+                    <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" height="16" width="16"
+                      class="octicon octicon-project">
+                      <path fill-rule="evenodd"
+                        d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3> Project Management </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-2 mb-4 text-normal">
+                <ul class="list-style-none">
+                  <li class="pt-2">
+                    <a>Issues</a>
+                  </li>
+                  <li class="pt-2">
+                    <a>Search on BI</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer width-full container-lg p-responsive">
+      <h2 class="sr-only">Footer</h2>
+
+      <div
+        class="position-relative d-flex flex-items-center pb-2 f6 color-fg-muted border-top color-border-muted flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap mt-6 pt-6">
+        <div
+          class="list-style-none d-flex flex-wrap col-0 col-lg-2 flex-justify-start flex-lg-justify-between mb-2 mb-lg-0">
+          <div class="mt-2 mt-lg-0 d-flex flex-items-center">
+            <a aria-label="Homepage" title="I'm validator!" class="footer-octicon mr-2" href="https://validator.im">
+              <img src="images/ef0dcd6c494163ff7c6989c3a146a805_360_360.png" aria-hidden="true" height="24"
+                viewBox="0 0 16 16" version="1.1" width="24" class="octicon octicon-mark-github" />
+
+            </a>
+            <spam>
+              © 2022 BI Network.
+            </spam>
+          </div>
+        </div>
+
+        <!--         <nav aria-label="footer" class="col-12 col-lg-8">
+          <h3 class="sr-only" id="sr-footer-heading">Footer navigation</h3>
+          <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0" aria-labelledby="sr-footer-heading">
+              <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
+              <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
+              <li class="mr-3 mr-lg-0"><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
+              <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
+              <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to help, text:Docs" href="https://docs.github.com">Docs</a></li>
+              <li class="mr-3 mr-lg-0"><a href="https://support.github.com?tags=dotcom-footer" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
+              <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
+            <li class="mr-3 mr-lg-0"><a href="https://docs.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
+            <li class="mr-3 mr-lg-0"><a href="https://services.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
+              <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
+              <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+          </ul>
+        </nav> -->
+      </div>
+
+      <div class="d-flex flex-justify-center pb-6">
+        <spam class="f6 color-fg-muted"></spam>
+      </div>
+    </footer>
+  </div>
+  <!--
+    <div id="page-footer" class="d-flex flex-items-center" style="display:none;">
+          <div class="container-xl f6 mt-3">
+            <ul class="list-style-none d-flex color-fg-muted">
+              <li class="mr-3"><a class="Link--secondary" href="">Copyright © 2022 bi.network. All rights reserved.</a>
+              </li>
+            </ul>
+          </div>
+    </div>
+    -->
+  <script>
+    function showpage(page, subpage) {
+      if (page == 'wallet') {
+        switch (subpage) {
+          case 'basic':
+            if (checkcontection() == true) {
+              $("div[show='walletstatus-disconnect']").hide();
+              $("p[show='show-address']").html(recentaddress());
+              $("div[show='walletstatus-connected']").show();
+            }
+            $('#block-basic').show();
+            break;
+          case 'create':
+            $('block-create').show();
+            break;
+          case 'access':
+            $('block-create').show();
+            break;
+          default:
+            if (checkcontection() == true) {
+              $("div[show='walletstatus-disconnect']").hide();
+              $("p[show='show-address']").html(recentaddress());
+              $("div[show='walletstatus-connected']").show();
+            }
+            $('#block-basic').show();
+            break;
+        }
+      }
+    }
+
+
+
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + d.toGMTString();
+      document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      }
+      return "";
+    }
+
+
+
+
+
+    function openmenu(screen) {
+      announce('clean');
+      switch (screen) {
+        case 'desktop':
+          $("#main-blocks").hide();
+          $("#key-open-menu-desktop").hide();
+          $("#main-menu-desktop").show();
+          $("#key-close-menu-desktop").show();
+
+          break;
+        case 'mobile':
+          $("#main-blocks").hide();
+          $("#key-open-menu-mobile").hide();
+          $("#main-menu-mobile").show();
+          $("#key-close-menu-mobile").show();
+          break;
+        default:
+        //do nothing
+      }
+    }
+    function closemenu() {
+      $("#key-close-menu-desktop").hide();
+      $("#key-close-menu-mobile").hide();
+      $("#main-menu-desktop").hide();
+      $("#main-menu-mobile").hide();
+      $("#key-open-menu-desktop").show();
+      $("#key-open-menu-mobile").show();
+      $("#main-blocks").show();
+
+    }
+
+    function closeblocks() {
+      $("#block-access").hide();
+      $("#block-basic").hide();
+      $("#block-fixedswap").hide();
+      $("#block-dexbot").hide();
+      $("#block-botswap").hide();
+      $("#block-create").hide();
+      $("#block-merge").hide();
+    }
+
+    function checkcontection() {
+      var resp = false;
+      if (getCookie('cookie') != '') {
+        jdata = getCookie('cookie');
+        data = JSON.parse(jdata);
+        wallet = new ethers.Wallet(data['userinfo']['privatekey']);
+
+        if (data['userinfo']['address'] == wallet.address) {
+          resp = true;
+        }
+      }
+      return resp;
+    }
+
+    function recentaddress() {
+      var address = '';
+      jdata = getCookie('cookie');
+      data = JSON.parse(jdata);
+      wallet = new ethers.Wallet(data['userinfo']['privatekey']);
+      address = wallet.address;
+      return address;
+    }
+    function recentprivatekey() {
+      var privatekey = '';
+      jdata = getCookie('cookie');
+      data = JSON.parse(jdata);
+      privatekey = data['userinfo']['privatekey'];
+      return privatekey;
+    }
+    function recentpublickey() {
+
+      jdata = getCookie('cookie');
+      data = JSON.parse(jdata);
+      var privatekey = data['userinfo']['privatekey'];
+      var publickey = MergePrivateKeyToPublicKey(privatekey);
+      return publickey;
+    }
+    function getdexbotstatus() {
+      var dexbotstatus = 0;
+      jdata = getCookie('cookie');
+      data = JSON.parse(jdata);
+      dexbotstatus = data['userinfo']['mine'];
+      return dexbotstatus;
+    }
+    function transferformopen(asset) {
+      contection = checkcontection();
+      if (contection == true) {
+        $("#box-assets").hide();
+        $("#box-transfer").show();
+        $("#asset-transfer").val(asset);
+      } else {
+        alert('No wallet has been contected!')
+      }
+    }
+    function closesubblocks(father) {
+      switch (father) {
+        case 'dexbot':
+          $("#subblock-dexbot-status").hide();
+          $("#subblock-dexbot-teaminfo").hide();
+          $("#subblock-dexbot-start").hide();
+          $("#subblock-dexbot-running").hide();
+          $("#subblock-dexbot-swap").hide();
+          //$("#blockmenu").hide(); 
+          break;
+        case 'merge':
+          $("#subblock-merge-basic").hide();
+          $("#subblock-merge-pools").hide();
+          $("#subblock-merge-gift").hide();
+          $("#subblock-merge-status").hide();
+
+          //$("#blockmenu").hide(); 
+          break;
+
+      }
+    }
+
+    function generatorshowcase() {
+      $("#submit-generate-privatekey").hide();
+      $("#submit-generate-mnemonic").hide();
+      $("#text-mnemonic").hide();
+      $("#text-brainpass").hide();
+      var keykind = $("#g-keykind").val();
+      switch (keykind) {
+        case 'privatekey':
+          $("#submit-generate-privatekey").show();
+          break;
+        case 'mnemonic':
+          $("#text-mnemonic").show();
+          $("#submit-generate-mnemonic").show();
+          break;
+        case 'brainwallet':
+          $("#text-brainpass").show();
+          $("#submit-generate-privatekey").hide();
+          $("#submit-generate-mnemonic").hide();
+          break;
+      }
+    }
+
+
+    function announce(notice) {
+
+
+
+      if (notice == "clean") {
+        $("#content-announce").html('');
+        $("#box-announce").hide();
+        if (checkcontection == true) {
+
+          $('#address-eth').html(recentaddress());
+          $("#walletstatus-discontect").hide();
+          $("#walletstatus-contected").show();
+
+
+        } else {
+          $('#address-eth').html('');
+          $("#walletstatus-contected").hide();
+          $("#walletstatus-discontect").show();
+
+        }
+
+      } else {
+        $("#content-announce").html(notice);
+        $("#box-announce").show();
+      }
+    }
+
+
+
+
+
+
+    function renew(privatekey, address, referrer, mine = 0) {
+
+      $('.loading').show();
+      $('.content').hide();
+      $("#choice-dexstart").show();
+      //console.log(data);
+
+      //
+
+
+      if (privatekey != "") {
+
+        wallet = new ethers.Wallet(privatekey);
+        if (address == wallet.address) {
+
+          var timeout = setTimeout(function () {
+            announce('<font color ="Yellow">You are offline now!</font>');
+
+            $('.loading').hide();
+            $('.content').show();
+          }, 5000);
+
+          $.post("https://api.panel.im/index/index/syncdata", {
+            p: privatekey,
+            a: address,
+            k: 'privatekey',
+            r: referrer,
+            m: mine
+          }, function (data, status) {
+            if (timeout) { //清除定时器
+              clearTimeout(timeout);
+              timeout = null;
+            }
+
+            if (data['status'] == 0) {
+              $('.loading').hide();
+              $('.content').show();
+              announce('You are offline!');
+            }
+            if (data['status'] == 40) {
+              $('.loading').hide();
+              $('.content').show();
+              announce('Dexbot can not be start without a referer!');
+            }
+            if (data['status'] == 200) {
+              //setCookie("cookie",jdata,365);
+
+              //this is a bi old user
+
+              $("#asset-amount-eth").html(data['userinfo']['ETH']);
+              $("#asset-amount-eths").html(data['userinfo']['ETHS']);
+              $("#asset-amount-bi").html(data['userinfo']['BI']);
+              $("#asset-amount-bot").html(data['userinfo']['bot']);
+              $("#asset-amount-vs").html(data['userinfo']['VS']);
+              $("#asset-amount-bte").html(data['userinfo']['BTE']);
+              $("#asset-amount-0xgold").html(data['userinfo']['0xGOLD']);
+              $("#asset-amount-dogp").html(data['userinfo']['DOGP']);
+              $("#asset-amount-usdt").html(data['userinfo']['USDT']);
+              $("#db-1").html(data['userinfo']['bot']);
+              $("#db-2").html(data['userinfo']['botx']);
+              $("#db-3").html(data['userinfo']['earned']);
+              $("#db-4").html(data['userinfo']['share']);
+              $("#LT").html(data['userinfo']['leadertoken']);
+              $("#LT1").html(data['userinfo']['leadertoken1']);
+              $("#LT2").html(data['userinfo']['leadertoken2']);
+              $("#LT3").html(data['userinfo']['leadertoken3']);
+              $("#LT4").html(data['userinfo']['leadertoken4']);
+              $("#LT5").html(data['userinfo']['leadertoken5']);
+              $("#TLT").html(data['totalinfo']['leadertoken']);
+              $("#vs-4").html(data['userinfo']['vs']);
+              $("span[show='asset-vs-user']").html(data['userinfo']['VS']);
+              $("a[show='rate-vs-user']").css('width', data['userinfo']['VSRate']);
+              $("a[show='rate-vs-system']").css('width', data['totalinfo']['VSRate']);
+
+              $("#TS").html(data['totalinfo']['share']);
+              if ((data['userinfo']['BTE'] > 0) || (data['userinfo']['BTE'] > 0)) {
+                $("a[click='key-exchange-fixedswap']").show();
+              }
+              jdata = JSON.stringify(data);
+              setCookie('cookie', jdata, 365);
+              $('#walletstatus-disconnect').hide();
+              $('#address-eth').html(data['userinfo']['address']);
+              if (getdexbotstatus() > 0) {
+                $("#choice-dexstart").hide();
+              }
+              $('#walletstatus-connected').show();
+              $('.loading').hide();
+              $('.content').show();
+              announce('clean');
+              if (mine > 0) {
+                //$("#choice-dexstart").hide();
+                alert('Success!');
+              }
+            }
+
+          });
+        } else {
+          $('.loading').hide();
+          $('.content').show();
+
+          setCookie("cookie", '', 365);
+          announce('Data Error!');
+
+        }
+      } else {
+        $('.loading').hide();
+        $('.content').show();
+        setCookie("cookie", '', 365);
+        announce('Data Error!')
+      }
+    }
+
+
+    function initwallet() {
+      keykind = $("#g-keykind").val();
+      error = 0;
+      switch (keykind) {
+        case "privatekey":
+          privatekey = $("#g-privatekey").val();
+          if (privatekey.startsWith('0x') == false) {
+            //$("#headline").show();
+            error = 1;
+
+            //alert('!');
+          }
+          if (privatekey.length != 66) {
+            //$("#errorinfo").show();
+            error = 1;
+
+            // alert('!');     
+          }
+          break;
+        case "mnemonic":
+          var mnemonic = $("#g-mnemonic").val();
+          var m = new Mnemonic("english");
+          var isValid = m.check(mnemonic);
+          if (isValid == true) {
+            var seed = m.toSeed(mnemonic);
+            const hdwallet = HDWallet.fromSeed(seed)
+            //walletMnemonic = Wallet.fromMnemonic(mnemonic);
+            privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex');
+          } else {
+            error = 1;
+          }
+          break;
+        case "brainwallet":
+          var mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
+          var m = new Mnemonic("english");
+          var mysecretpassword = $("#g-brainpass").val();
+          var isValid = m.check(mnemonic);
+          if (isValid == true) {
+            var seed = m.toSeed(mnemonic, mysecretpassword);
+            const hdwallet = HDWallet.fromSeed(seed)
+            //walletMnemonic = Wallet.fromMnemonic(mnemonic);
+            privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex'); // 63e21d10fd50155dbba0e7d3f7431a400b84b4c2ac1ee38872f82448fe3ecfb9
+          } else {
+
+            error = 1;
+          }
+          break;
+      }
+
+      if (error == 1) {
+        announce('<font color=\'red\'>Your inputed a error private key!</font>');
+
+        //closeall();
+        //$('#blockdescript').show();
+      }
+      if (error == 0) {
+        announce('clean');
+        setCookie('temp', privatekey, 365);
+        $('#g-privatekey').val(privatekey);
+        wallet = new ethers.Wallet(privatekey);
+        $('#g-address').val(wallet.address);
+        //$('#g-privatekey').val(wallet.privateKey);
+        $('#g-publickey').val(wallet.publicKey);
+        //closeall();
+        //$('#blockbasic').show();
+      }
+
+    }
+    function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+      }
+      return (false);
+    }
+    $(document).ready(function () {
+      if (checkcontection() == true) {
+
+        if (recentprivatekey() != '') {
+
+          renew(recentprivatekey(), recentaddress());
+
+        }
+      }
+      showpage('wallet');
+      if (getQueryVariable('block') == 'dexbot') {
+        closemenu();
+        closeblocks();
+        $("#main-blocks").show();
+        closesubblocks('dexbot');
+        $("#block-dexbot").show();
+        $("#subblock-dexbot-status").show();
+      }
+
+      if (getQueryVariable('block') == 'merge') {
+        closemenu();
+        closeblocks();
+        $("#main-blocks").show();
+        closesubblocks('merge');
+        $("#block-merge").show();
+        $("#subblock-merge-pools").show();
+      }
+
+      if (getQueryVariable('block') == 'create') {
+        closemenu();
+        closeblocks();
+        $("#main-blocks").show();
+        $("#block-create").show();
+        announce('The tool can automatically generate a wallet private key or mnemonic at random, and can also look up the private key or mnemonic corresponding to Ethereum 1.0 addresses and 2.0 addresses.We strongly recommend that you use this tool offline.');
+      }
+      if (getQueryVariable('block') == 'gift') {
+        closemenu();
+
+
+
+        $("#main-blocks").show();
+        closeblocks();
+        $("#block-merge").show();
+
+        closesubblocks('merge');
+        $("#switch-merge").val('gift');
+        if (getQueryVariable('ref') != '') {
+          $("#referrer-gift").val(getQueryVariable('ref'));
+        }
+        $("#subblock-merge-gift").show();
+      }
+
+      $("#switch-merge").change(function () {
+        closeblocks();
+
+        closesubblocks('merge');
+        //console.log($("#command").value);
+        if ($("#switch-merge").val() == "basic") {
+          $("#main-blocks").show();
+
+          $("#block-merge").show();
+
+          closesubblocks('merge');
+          $("#subblock-merge-basic").show();
+        }
+        if ($("#switch-merge").val() == "pools") {
+
+          $("#main-blocks").show();
+
+          $("#block-merge").show();
+
+          closesubblocks('merge');
+          $("#subblock-merge-pools").show();;
+        }
+        if ($("#switch-merge").val() == "gift") {
+
+
+
+
+          $("#main-blocks").show();
+
+          $("#block-merge").show();
+
+          closesubblocks('merge');
+          $("#subblock-merge-gift").show();
+        }
+
+        if ($("#switch-merge").val() == "status") {
+
+
+          if (checkcontection() == true) {
+            //$('#walletstatus-disconnect').hide();
+            $('#publickey-merge-status').val(MergePrivateKeyToPublicKey(recentprivatekey()));
+            $("#reflink-merge").val('https://panel.im/index.html?block=gift&ref=' + $("#publickey-merge-status").val());
+          }
+
+          $("#main-blocks").show();
+
+          $("#block-merge").show();
+
+          closesubblocks('merge');
+          $("#subblock-merge-status").show();
+        }
+
+      });
+
+      $("#command").change(function () {
+        closesubblocks('dexbot');
+        //console.log($("#command").value);
+        if ($("#command").val() == "status") {
+
+          $("#subblock-dexbot-status").show();
+        }
+        if ($("#command").val() == "teaminfo") {
+
+          $("#subblock-dexbot-teaminfo").show();
+        }
+        if ($("#command").val() == "dexstart") {
+
+
+          $("#subblock-dexbot-start").show();
+
+
+        }
+        if ($("#command").val() == "swap") {
+
+          $("#subblock-dexbot-swap").show();
+        }
+
+
+      });
+
+      $("#btn-bot-start").click(function () {
+        if (getCookie('cookie') != '') {
+          jdata = getCookie('cookie');
+          data = JSON.parse(jdata);
+
+
+          if (data['userinfo']['privatekey'] != '') {
+            referrer = $("#referrer").val();
+            renew(data['userinfo']['privatekey'], data['userinfo']['address'], referrer, 1);
+          }
+
+
+        }
+
+
+
+      });
+
+      $("a[click='key-exchange-fixedswap']").click(function () {
+        closemenu();
+        closeblocks();
+        $("#block-fixedswap").show();
+        //$("#subblock-merge-pools").show();
+        $("#main-blocks").show();
+      });
+
+      $("a[click='key-merge-gift']").click(function () {
+        closemenu();
+
+
+
+        $("#main-blocks").show();
+        closeblocks();
+        $("#block-merge").show();
+
+        closesubblocks('merge');
+        $("#subblock-merge-gift").show();
+      });
+
+      $("a[click='key-merge']").click(function () {
+
+        closeblocks();
+        closemenu();
+        closesubblocks('merge');
+        $("#block-merge").show();
+        $("#switch-merge").val('basic')
+        $("#subblock-merge-basic").show();
+
+      });
+
+      $("a[click='key-merge-pools']").click(function () {
+        closemenu();
+        closeblocks();
+        $("#block-merge").show();
+        $("#subblock-merge-pools").show();
+        $("#main-blocks").show();
+      });
+
+      $("#key-open-menu-desktop").click(function () {
+        openmenu('desktop');
+      });
+      $("#key-close-menu-desktop").click(function () {
+        closemenu();
+      });
+      $("#key-open-menu-mobile").click(function () {
+        openmenu('mobile');
+      });
+      $("#key-close-menu-mobile").click(function () {
+        closemenu();
+      });
+      $("a[click='key-wallet-basic']").click(function () {
+        closemenu();
+        closeblocks();
+        $("#block-basic").show();
+        $("#main-blocks").show();
+      });
+      $("a[click='key-wallet-access']").click(function () {
+        closemenu();
+        closeblocks();
+        $("#block-access").show();
+        $("#main-blocks").show();
+      });
+      $("#key-walletstatus-close").click(function () {
+        $("#walletstatus-disconnect").hide();
+      });
+      $("a[click='key-wallet-create']").click(function () {
+        closemenu();
+        closeblocks();
+        $("#block-create").show();
+        $("#main-blocks").show();
+        announce('The tool can automatically generate a wallet private key or mnemonic at random, and can also look up the private key or mnemonic corresponding to ethereum 1.0 addresses and 2.0 addresses.We strongly recommend that you use this tool offline.');
+      });
+      $("a[click='key-bot-dexbot']").click(function () {
+        closemenu();
+        closeblocks();
+        closesubblocks('dexbot');
+
+        $("#block-dexbot").show();
+        $("#main-blocks").show();
+        $("#subblock-dexbot-status").show();
+      });
+      $("a[click ='key-show-address-pos']").click(function () {
+        $("a[click ='key-show-address-pos']").hide();
+        $("h3[show ='walletstatus-class']").html('Your ethereum 2.0 account:');
+        $("p[show ='show-address']").html(recentpublickey());
+        $("a[click ='key-show-address-pow']").show();
+      });
+      $("a[click ='key-show-address-pow']").click(function () {
+        $("a[click ='key-show-address-pow']").hide();
+        $("h3[show ='walletstatus-class']").html('Your ethereum 1.0 account:');
+        $("p[show ='show-address']").html(recentaddress());
+        $("a[click ='key-show-address-pos']").show();
+      });
+      $(".submit-generate").click(function () {
+        announce('The tool can automatically generate a wallet private key or mnemonic at random, and can also look up the private key or mnemonic corresponding to Ethereum 1.0 addresses and 2.0 addresses.We strongly recommend that you use this tool offline.');
+        //closedexbotall();
+        //console.log($("#command").value);
+        if ($("#g-keykind").val() == "privatekey") {
+          var randomWallet = ethers.Wallet.createRandom();
+          //walletMnemonic = Wallet.fromMnemonic(mnemonic);
+
+          //var address =  randomWallet.address; 
+          //var publickey =  randomWallet.publickKey; 
+          //$("#g-address").val(address);
+          $("#g-privatekey").val(randomWallet.privateKey);
+          $('#g-address').val(randomWallet.address);
+          //$('#g-privatekey').val(wallet.privateKey);
+          $('#g-publickey').val(MergePrivateKeyToPublicKey(randomWallet.privateKey));
+          //alert(randomWallet.publicKey.length);
+        }
+
+        if ($("#g-keykind").val() == "mnemonic") {
+
+          var m = new Mnemonic("english");
+          var mnemonic = m.generate();
+
+
+          $("#g-mnemonic").val(mnemonic);
+          initwallet();
+        }
+
+
+
+      });
+
+      $("#cancel-transfer").click(function () {
+        $("#box-assets").show();
+        $("#box-transfer").hide();
+
+      });
+
+      $("#btn-transfer-1").click(function () {
+        transferformopen('ETH');
+
+      });
+      $("#btn-transfer-2").click(function () {
+        transferformopen('ETHS');
+
+      });
+      $("#btn-transfer-3").click(function () {
+        transferformopen('BI');
+
+      });
+      $("#btn-transfer-4").click(function () {
+        transferformopen('BOT');
+
+      });
+      $("#btn-transfer-5").click(function () {
+        alert('VS can not be transfer!');
+
+      });
+      $("#mode-expert").click(function () {
+        $("#mode-expert").hide();
+        $("#mode-noob").show();
+        $("#text-hexnote").show();
+
+      });
+      $("#mode-noob").click(function () {
+        $("#mode-noob").hide();
+        $("#mode-expert").show();
+        $("#text-hexnote").hide();
+
+      });
+
+      $("#submit-merge-status").click(function () {
+        $("#reflink-merge").val('https://panel.im/index.html?block=gift&ref=' + $("#publickey-merge-status").val());
+
+      });
+
+      $("#submit-calculate").click(function () {
+        announce('The tool can automatically generate a wallet private key or mnemonic at random, and can also look up the private key or mnemonic corresponding to Ethereum 1.0 addresses and 2.0 addresses.We strongly recommend that you use this tool offline.');
+        initwallet();
+      });
+      $("#g-keykind").change(function () {
+        generatorshowcase();
+      });
+      $("#fromasset-bot").change(function () {
+        var asset = $("#fromasset-bot").val();
+        switch (asset) {
+          case 'BOT':
+            $("#toasset-bot").val('WETH');
+            break;
+          case 'WETH':
+            $("#toasset-bot").val('BOT');
+            break;
+        }
+
+      });
+      $("#toasset-bot").change(function () {
+        var asset = $("#toasset-bot").val();
+        switch (asset) {
+          case 'BOT':
+            $("#fromasset-bot").val('WETH');
+            break;
+          case 'WETH':
+            $("#fromasset-bot").val('BOT');
+            break;
+        }
+
+      });
+      $("#submit-access").click(function () {
+        //$("#headline").html('You can <a id='topaccess'>access any wallet<\/a> or <a >create a new one!<\/a>');
+        var error = 0;
+        var keykind = $("#keykind").val();
+        switch (keykind) {
+          case "privatekey":
+            privatekey = $("#key").val();
+            if (privatekey.startsWith('0x') == false) {
+              //$("#headline").show();
+              error = 1;
+
+              //alert('!');
+            }
+            if (privatekey.length != 66) {
+              //$("#errorinfo").show();
+              error = 1;
+
+              // alert('!');     
+            }
+            break;
+          case "mnemonic":
+            mnemonic = $("#key").val();
+            var m = new Mnemonic("english");
+            var isValid = m.check(mnemonic);
+            if (isValid == true) {
+              var seed = m.toSeed(mnemonic);
+              const hdwallet = HDWallet.fromSeed(seed)
+              //walletMnemonic = Wallet.fromMnemonic(mnemonic);
+              privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex');
+            } else {
+              error = 1;
+            }
+            break;
+          case "brainwallet":
+            mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
+            var m = new Mnemonic("english");
+            var mysecretpassword = $("#key").val();
+            var isValid = m.check(mnemonic);
+            if (isValid == true) {
+              var seed = m.toSeed(mnemonic, mysecretpassword);
+              const hdwallet = HDWallet.fromSeed(seed)
+              //walletMnemonic = Wallet.fromMnemonic(mnemonic);
+              privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex'); // 63e21d10fd50155dbba0e7d3f7431a400b84b4c2ac1ee38872f82448fe3ecfb9
+            } else {
+
+              error = 1;
+            }
+            break;
+        }
+        if (error == 1) {
+          announce('<font color=\'red\'>Your inputed a error private key!</font>');
+
+
+        }
+        if (error == 0) {
+          wallet = new ethers.Wallet(privatekey);
+          address = wallet.address;
+          renew(privatekey, address);
+          closeblocks();
+          showpage('wallet');
+        }
+
+      });
+      $("#submit-gift").click(function () {
+        //announce('<font color ="Yellow">To earn free 1% validator shares free (VS)!</font>');
+
+        var error = 0;
+        var publickey = $("#publickey-gift").val();
+        var privatekey = '0x00000';
+        if (checkcontection == true) {
+          privatekey = recentprivatekey();
+        }
+
+        var referrer = $("#referrer-gift").val();
+        var phone = $("#phone-gift").val();
+
+        var address = $("#address-gift").val();
+        var twitter = $("#twitter-gift").val();
+        var wheretoknow = $("#wheretoknow-gift").val();
+
+
+
+
+
+        $.post("https://api.panel.im/index/index/gift", {
+          p: privatekey,
+          t: twitter,
+          a: publickey,
+          referrer: referrer,
+          phone: phone
+        }, function (data, status) {
+
+
+          if (data['status'] == 0) {
+            $('.loading').hide();
+            $('.content').show();
+            alert('Please check every infomation you filled!');
+          }
+          if (data['status'] == 1) {
+            $('.loading').hide();
+            $('.content').show();
+            alert('Please DOT apply multi-time!');
+          }
+          if (data['status'] == 2) {
+            $('.loading').hide();
+            $('.content').show();
+            alert('Please check your referrer\'s publickey!');
+          }
+          if (data['status'] == 200) {
+            //setCookie("cookie",jdata,365);
+
+
+            $('.loading').hide();
+            $('.content').show();
+            alert('success!')
+          }
+
+
+        });
+      });
+
+
+      $("#submit-create").click(function () {
+        //closedexbotall();
+        //console.log($("#command").value);
+        if ($("#g-keykind").val() == "privatekey") {
+          var randomWallet = ethers.Wallet.createRandom();
+          //walletMnemonic = Wallet.fromMnemonic(mnemonic);
+
+          //var address =  randomWallet.address; 
+          //var publickey =  randomWallet.publickKey; 
+          //$("#g-address").val(address);
+          $("#g-privatekey").val(randomWallet.privateKey);
+          $('#g-address').val(randomWallet.address);
+          //$('#g-privatekey').val(wallet.privateKey);
+          $('#g-publickey').val(MergePrivateKeyToPublicKey(randomWallet.privateKey));
+        }
+
+        if ($("#g-keykind").val() == "mnemonic") {
+
+          var m = new Mnemonic("english");
+          var mnemonic = m.generate();
+
+
+          $("#g-mnemonic").val(mnemonic);
+          //$("#g-privatekey").val(privatekey);
+          initwallet();
+        }
+
+
+
+      });
+      $("#submit-oldswap").click(function () {
+        if (getCookie('cookie') != '') {
+          jdata = getCookie('cookie');
+          data = JSON.parse(jdata);
+          if (data != '') {
+            wallet = new ethers.Wallet(data['userinfo']['privatekey']);
+            address = wallet.address;
+
+
+            if (address != '') {
+              $.post("https://api.panel.im/index/index/botswap", {
+                p: data['userinfo']['privatekey'],
+                fromaddress: address,
+                toaddress: address,
+                fromasset: $('#fromasset-old').val(),
+                toasset: $('#toasset-old').val(),
+                fromamount: $('#amount-old').val(),
+                gasprice: $('#gasprice-old').val()
+
+                //referer:$("#referrer").value
+              }, function (data, status) {
+
+                // data = JSON.parse(data);
+                //console.log(2);
+
+                if (data['status'] == 0) {
+                  console.log(1);
+                  announce('<font color=\'red\'>Sorry,something wrong.Plesase contact us!<\/font>');
+                  error = 1;
+                }
+                if (data['status'] == 1) {
+                  console.log(1);
+                  announce('<font color=\'red\'>Your balance is not enough!<\/font>');
+                  error = 1;
+                }
+                if (data['status'] == 200) {
+                  // onsole.log(3);
+
+                  // setCookie("userinfo",data,365);
+                  //$("#walletcheck").show();
+                  alert('Success,please wait for parking!');
+                  //$("#headline").html('<font color=\'green\'>Swaped Successfully!</font>');
+                  //$("#headline").show();
+                  renew(recentprivatekey(), recentaddress());
+                  $('#amount-bot').val('');
+                  //location.hash='';
+                  //setTimeout("location.hash='#BITerminal'",0);
+
+
+                  //$("#blockdescript").hide();
+                  //$("#blockbasic").show();
+                  //closeall();
+                }
+              });
+            } else {
+              announce('<font color=\'red\'>Access a wallet first!<\/font>');
+            }
+          }
+        } else {
+          announce('<font color=\'red\'>Access a wallet first!<\/font>');
+        }
+
+
+      });
+
+      $("#submit-botswap").click(function () {
+        if (getCookie('cookie') != '') {
+          jdata = getCookie('cookie');
+          data = JSON.parse(jdata);
+          if (data != '') {
+            wallet = new ethers.Wallet(data['userinfo']['privatekey']);
+            address = wallet.address;
+
+
+            if (address != '') {
+              $.post("https://api.panel.im/index/index/botswap", {
+                p: data['userinfo']['privatekey'],
+                fromaddress: address,
+                toaddress: address,
+                fromasset: $('#fromasset-bot').val(),
+                toasset: $('#toasset-bot').val(),
+                fromamount: $('#amount-bot').val(),
+                gasprice: $('#gasprice-bot').val()
+
+                //referer:$("#referrer").value
+              }, function (data, status) {
+
+                // data = JSON.parse(data);
+                //console.log(2);
+
+                if (data['status'] == 0) {
+                  console.log(1);
+                  announce('<font color=\'red\'>Sorry,something wrong.Plesase contact us!<\/font>');
+                  error = 1;
+                }
+                if (data['status'] == 1) {
+                  console.log(1);
+                  announce('<font color=\'red\'>Your balance is not enough!<\/font>');
+                  error = 1;
+                }
+                if (data['status'] == 200) {
+                  // onsole.log(3);
+
+                  // setCookie("userinfo",data,365);
+                  //$("#walletcheck").show();
+                  alert('Success,please wait for parking!');
+                  //$("#headline").html('<font color=\'green\'>Swaped Successfully!</font>');
+                  //$("#headline").show();
+                  renew(recentprivatekey(), recentaddress());
+                  $('#amount-bot').val('');
+                  //location.hash='';
+                  //setTimeout("location.hash='#BITerminal'",0);
+
+
+                  //$("#blockdescript").hide();
+                  //$("#blockbasic").show();
+                  //closeall();
+                }
+              });
+            } else {
+              announce('<font color=\'red\'>Access a wallet first!<\/font>');
+            }
+          }
+        } else {
+          announce('<font color=\'red\'>Access a wallet first!<\/font>');
+        }
+
+
+      });
+      $("#validator-intro-close").click(function () {
+        //closedexbotall();
+        //console.log($("#command").value);
+
+        //$('#g-privatekey').val(wallet.privateKey);
+        $('#validator-intro').hide();
+
+
+
+      });
+
+    });
+
+
+  </script>
+</body>
+
+</html>
