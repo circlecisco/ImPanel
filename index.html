@@ -3,11 +3,11 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>I'm validator!</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <title>I'm CoinTool^^</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="images/eth-glyph-colored.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/eth-glyph-colored.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/eth-glyph-colored.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/eth-glyph-colored.png">
   <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
@@ -77,10 +77,10 @@
       <div class="Header-item mt-n1 mb-n1 d-none d-md-flex ml-md-3">
         <div class="d-flex flex-items-center position-sticky top-0" id="support-logo">
           <a aria-hidden="true" href="index.html">
-            <img width="40" src="images/ef0dcd6c494163ff7c6989c3a146a805_360_360.png" />
+            <img height="48" src="images/eth-glyph-colored.png" />
 
           </a>
-          <a class="f4 text-semibold no-underline no-wrap pl-2" href="index.html">I'm validator!</a>
+          <a class="f4 text-semibold no-underline no-wrap pl-2" href="index.html">I'm CoinTool^^</a>
         </div>
       </div>
       <div class="Header-item d-md-none">
@@ -114,7 +114,7 @@
       <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative mr-6">
         <a class="Header-link" href="index.html" aria-label="Home">
           <img class="octicon octicon-mark-github v-align-middle"
-            src="images/ef0dcd6c494163ff7c6989c3a146a805_360_360.png" viewBox="0 0 16 16" version="1.1" width="48"
+            src="images/eth-glyph-colored.png" viewBox="0 0 30 30" version="1.1" height="48"
             aria-hidden="true" />
         </a>
       </div>
@@ -178,6 +178,22 @@
                 </span>
                 <span>
                   <font color="#58a6ff">ETH</font>
+                </span>
+                <span style="float:right;">
+                  <font color="#58a6ff">
+                    <span id="asset-amount-eth">sync</span>
+                  </font>&nbsp;&nbsp;<button class="btn btn-primary" id="btn-transfer-0">Tranfer</button>
+                </span>
+              </div>
+            </li>
+
+            <li class="Box-row">
+              <div class="mb-2" style="font-weight: 600 !important;font-size:auto;padding-top:center;">
+                <span class="pr-1">
+                  <img class="avatar avatar-user" src="images/ethlogo.jpeg" width="32" height="32">
+                </span>
+                <span>
+                  <font color="#58a6ff">WETH</font>
                 </span>
                 <span style="float:right;">
                   <font color="#58a6ff">
@@ -315,22 +331,57 @@
 
 
       </div>
+
+      <div id="block-news" style="display:none;">
+        <h1 class="border-bottom h1 my-3 my-lg-4">BI News - Sep. 19th 2022</h1>
+  
+
+
+          <div class="Box">
+            <div class="d-flex flex-column p-3">
+              <div class="d-flex flex-row">
+                <div class="pr-1 pr-lg-6">
+                  <h3 class="mb-1 f2">
+                    币读新闻
+                  </h3>
+                  <p class="m-0 color-fg-default">
+                    This is a slow chat article for users in really Chinese regions, involving a lot of Chinese mile words, so to avoid misinterpretation, non-native Chinese users are requested to give up reading it.
+                  </p>
+                  <p><img src="images/core.png" width="100%"></p>
+                  <h3 class="mb-1 f2">
+                    9月19日 BI中文简报
+                  </h3>
+                 
+                  <p>
+                    为了100%确保我们系统的开发进度能与以太坊官方的时间表相匹配，过去的一个月整个BI团队（包括技术和市场领导人）付出了相当大的努力。
+
+                    特别是过去的几天时间，以太坊几乎几个小时就会发生一次代码变动，这让本来就已经是全时区工作的我们更加辛苦。不过值得庆幸的是，经过团队和市场的努力，我们还是在本周第一个工作日的清晨基本完成了我们BI工具套件的1.0 Beta版。
+                  </p><p> 
+                    1.0 Beta版的问世，代表着我们在去年打下以太坊二层网络这个基础层后，终于初步完成了可以任意打通多个区块链的web3应用层。目前，1.0 Beta版的工具套件还有很多不完善的地方，希望大家能包容理解。特别需要说明的是，以太坊2.0目前虽然已经完成了第二阶段（The Merge）的早期工作计划，但是要彻底完成第二阶段的工作预计是未来的5-10天完成，目前以太坊的官方代码库依然处于频繁更新的状态。所以，在这样的大环境下，我们DEXBot机器人某些用户的数据可能因为我们紧跟以太坊更新进度的高强度工作状态下，与实际收益发生了一些误差。即使我们内部已经证实有一部分账号系我们系统的纠错功能导致的错误修复，但是当用户拿着更早期的数据截图来找到我们时，负责我们DEXBot AI核心算法的XY都难得地露出了不好意思的笑容。另外，昨天我们对少数最早参与我们Merge空投的用户进行算法修正时，导致这部分用户的数据发生错误，大家请放心，请您认真读完以下内容：我们的DEXBot的基本架构是用100%的智能合约作为去中心化资金池以保障用户集体资产的透明与安全。但是，DEXBot绝对不是一个几百上千行代码的智能合约就能实现的，而是需要包括自主节点、交易对白名单、AI订单轮询与下单系统以及最为重要的利润分配误差修复等中心化功能。这些中心化功能绝对不会影响到大家的本金安全。但是，却给我们永久性对利润错误分配等错误进行修复的机会。虽然这种类型的错误即使在AWS、FB、GOOGLE等大厂以及包括NASA在内的国家级科研机构都在每天发生，但是我们也会证实错误，安排专人负责修复。为了保证将来各种服务的高效沟通与图文存档，从今日起，我们BI团队启用：support@bi.network 作为技术问题提交的唯一渠道，我们会安排专人负责，做到任何技术问题力求在24小时为会员解决。该邮箱会在今天晚些启用，请注意查看官方通知。
+                  </p><p> 
+                    目前，BI 工具套装的1.0 Beta版本已经包含 Off Chain Wallet（离线安全钱包）、Readonly Access (免私钥观察钱包) 、W2W (Web 3聚合跨链交易工具)、核心产品 DEXBot等重要工具。我们在继续熬夜加班，争取在以太坊第二阶段的升级工作完成前上线目前正在进行内部测试的 DAO Launcher（一键得DAO）、Token Factory（一键发币）、BI Card 、Satoshi College（与DUCK大学国际部等知名学术机构合作的免费web3教育与就业一站式服务平台）以及我们吹了一年的牛逼 Making Chain Just Now （链立得）系统。
+                  </p><p>
+                    总之，BI工具套装就是一个定位于服务项目方和技术型投资者的web3工具平台。我们将在未来几天内上线包括google和telegram付费广告在内的多个宣传平台。希望上了广告后，我们一天两天测试线上拿出一个工具上线，以赢取全球用户的认可，通过按次小额付费的模式快速实现的BI代币的回收与销毁，从而实现价格的上涨。我们代币的具体上线时间很近了，因为为了保证我们外向型发展项目的长期战略和与以太坊的高度同步，我们计划是在以太坊本次更新的重要事件点（上海分叉）当日，开放交易。因为那一天是以太坊计划的资产赎回日，这样我们将有充裕的资金还护盘，至于还要几天，以太坊的官方回答是“近日”。
+                  </p><p>  
+                    最后，本文所写出的计划均是正事的团队工作白皮书，我们会严格按照计划推进BI的发展。争取实现今年内成为业界知名项目。最后，在认真严肃的广告下：我们明天将有一场名为“DEXBot与验证人节点双收益科学论述”的小型讲座在这个平台发布，请有兴趣的用户注意收看。千万不要小看我们的免费节点和机器人赠送节点，等你真正知道以太坊的之后的算法后，你就明白智者都是在推敲未来，而愚者都在数落过去（用于开发者技术实验的早期信标链收益毫无参考性），我们希望大家都是智者，感谢大家长期支持我们，我们会时刻与会员共同扮演好第四次工业革命弄潮儿这一历史性的角色！
+                  </p><p>
+                    正式进入为期5个小时的睡眠时间，技术团队全体休息，一切问题在下午15点后联络。
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+       
+      </div>
+    
       <div id="block-merge" style="display:none;">
         <h1 class="border-bottom h1 my-3 my-lg-4">Ethereum 2.0 Merge in Sep.</h1>
-        <dl class="form-group">
-          <dt><label>Select a tool of the merge</label></dt>
-          <dd>
-            <select id="switch-merge" required="required" class="form-select">
-              <option value="basic">The Merge Infomation</option>
-              <option value="share">Validator Share</option>
-              <option value="nano">nano Validator Share</option>
-              <option value="gift">nanoVS Airdrop</option>
-            </select>
-          </dd>
-          <dd class="error"></dd>
-        </dl>
+  
 
-        <div id="subblock-merge-basic">
+  <!--       <div id="subblock-merge-basic">
 
           <div class="Box">
             <div class="d-flex flex-column p-3">
@@ -864,7 +915,7 @@
           </dl>
 
           <button class="btn btn-primary" id="submit-merge-status" type="">Submit</button>
-        </div>
+        </div> -->
       </div>
 
 
@@ -904,7 +955,7 @@
                 You Hold:
                 <span class="text-emphasized" show="asset-vs-user">0</span> VS <br />
                 Total Issue:
-                <span class="text-emphasized" show="asset-vs-system">300</span> VS <a
+                <span class="text-emphasized" show="asset-vs-system">600</span> VS <a
                   id="switch-share-display">Proof of Assets for VS</a>
               </div>
             </div>
@@ -913,14 +964,13 @@
           <li class="Box-row p-0 d-flex flex-wrap">
             <div class="col-12 col-md-6 px-3 py-4">
               <div class="Progress" style="background: #8250df;">
-                <a class="Progress-item" style="width:0%;background: #3fb950;" show="3%"></a>
+                <a class="Progress-item" style="width:0%;background: #3fb950;" show="rate-vs-earned-lastday"></a>
               </div>
               <div class="mt-2">
-                You Earned From nVS:
-                <span class="text-emphasized" show="asset-vs-user">0</span> BOT <br />
-                All the Users Earned:
-                <span class="text-emphasized" show="asset-vs-system">0</span> BOT on <span
-                  class="Yesterday">0000-00-00</span>
+                Yesterday You Earned From VS:
+                <span class="text-emphasized" id="earned-vs-user-lastday">0</span> BOT <br />
+                Yesterday The System Earned From VS:
+                <span class="text-emphasized" id="earned-vs-system-lastday">0</span> ETH
               </div>
             </div>
           </li>
@@ -928,18 +978,18 @@
           <li class="Box-row p-0 d-flex flex-wrap">
             <div class="col-12 col-md-6 px-3 py-4">
               <div class="Progress" style="background: #8250df;">
-                <a class="Progress-item" style="width:0%;background: #3fb950;" show="3%"></a>
+                <a class="Progress-item" style="width:0%;background: #3fb950;" show="rate-vs-earned"></a>
               </div>
               <div class="mt-2">
-                You Total Earned From nVS:
-                <span class="text-emphasized" show="asset-vs-user">0</span> BOT <br />
-                All the Users Total Earned:
-                <span class="text-emphasized" show="asset-vs-system">0</span> BOT
+                You Total Earned From VS:
+                <span class="text-emphasized" id="earned-vs-user">0</span> BOT <br />
+                All Users Total Claimed From VS:
+                <span class="text-emphasized" id="earned-vs-system">0</span> BOT
               </div>
             </div>
           </li>
 
-          <li class="Box-row p-0">
+       <!--    <li class="Box-row p-0">
             <ul class="list-style-none text-center d-flex flex-wrap">
               <li
                 class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
@@ -1002,7 +1052,7 @@
                 <span class="color-fg-muted">BOT System Total Earned</span>
               </li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </div>
       <p></p>
@@ -1082,14 +1132,13 @@
           <li class="Box-row p-0 d-flex flex-wrap">
             <div class="col-12 col-md-6 px-3 py-4">
               <div class="Progress" style="background: #8250df;">
-                <a class="Progress-item" style="width:0%;background: #3fb950;" show="3%"></a>
+                <a class="Progress-item" style="width:0%;background: #3fb950;" show="rate-nvs-earned-lastday"></a>
               </div>
               <div class="mt-2">
-                You Earned From nVS:
-                <span class="text-emphasized" id="user-earned-from-nvs-yesterday">0</span> ETH <br />
-                All the Users Earned:
-                <span class="text-emphasized" id="system-earned-from-nvs-yesterday">0</span> ETH on <span
-                  class="Yesterday">0000-00-00</span>
+                Yesterday You Earned From nVS:
+                <span class="text-emphasized" id="earned-nvs-user-lastday">0</span> ETH<br />
+                Yesterday System Earned From Nodes for nVS:
+                <span class="text-emphasized" id="earned-nvs-system-lastday">0</span> ETH
               </div>
             </div>
           </li>
@@ -1097,87 +1146,24 @@
           <li class="Box-row p-0 d-flex flex-wrap">
             <div class="col-12 col-md-6 px-3 py-4">
               <div class="Progress" style="background: #8250df;">
-                <a class="Progress-item" style="width:0%;background: #3fb950;" show="3%"></a>
+                <a class="Progress-item" style="width:0%;background: #3fb950;" show="rate-nvs-earned"></a>
               </div>
               <div class="mt-2">
                 You Total Earned From nVS:
-                <span class="text-emphasized" id="user-earned-from-nvs">0</span> ETH <br />
-                All the Users Total Earned:
-                <span class="text-emphasized" id="system-earned-from-nvs">0</span> ETH
+                <span class="text-emphasized" id="earned-nvs-user">0</span> ETH <br />
+                All Users Total Claimed From nVS:
+                <span class="text-emphasized" id="earned-nvs-system">0</span> ETH
               </div>
             </div>
           </li>
 
-          <li class="Box-row p-0">
-            <ul class="list-style-none text-center d-flex flex-wrap">
-              <li
-                class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
-                <span class="d-block h4">
-                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
-                    data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
-                    <path
-                      d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
-                    </path>
-                    <path fill-rule="evenodd"
-                      d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
-                  </svg>
-                  0
-                </span>
-                <span class="color-fg-muted">ETH You Earned Yesterday</span>
-              </li>
-              <li
-                class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
-                <span class="d-block h4">
-                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
-                    data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
-                    <path color="#a371f7"
-                      d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
-                    </path>
-                    <path color="#a371f7" fill-rule="evenodd"
-                      d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
-                  </svg>
-                  0
-                </span>
-                <span class="color-fg-muted">ETH System Earned Yesterday</span>
-              </li>
-              <li
-                class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
-                <span class="d-block h4">
-                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
-                    data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
-                    <path
-                      d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
-                    </path>
-                    <path fill-rule="evenodd"
-                      d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
-                  </svg>
-                  0
-                </span>
-                <span class="color-fg-muted">ETH You Total Earned</span>
-              </li>
-              <li
-                class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
-                <span class="d-block h4">
-                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
-                    data-view-component="true" class="octicon octicon-git-pull-request color-fg-success">
-                    <path color="#a371f7"
-                      d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z">
-                    </path>
-                    <path color="#a371f7" fill-rule="evenodd"
-                      d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
-                  </svg>
-                  0
-                </span>
-                <span class="color-fg-muted">ETH System Total Earned</span>
-              </li>
-            </ul>
-          </li>
+         
         </ul>
       </div>
 
       <div class="Box Share-Validators" style="display:none;margin-top:8px;">
         <div class="Box-header">
-          <h3 class="Box-title"><a class="back-to-data">mVS Detail</a> \ Validators for mVS <span
+          <h3 class="Box-title"><a class="back-to-data">nVS Detail</a> \ Validators for nVS <span
               style="float:right;"><span></h3>
         </div>
 
@@ -1213,7 +1199,7 @@
 
 
 
-  </div>
+    </div>
 
   <div id="block-dexbot" style="display:none;">
 
@@ -1237,17 +1223,18 @@
           </div>
         </li>
 
-        <li class="Box-row p-0 d-flex flex-wrap">
-          <div class="col-12 col-md-6 px-3 py-4">
-            <div class="Progress" style="background: #8250df;">
-              <a class="Progress-item" style="width:0%;background: #3fb950;" show="3%"></a>
-            </div>
+          <li class="Box-row p-0 d-flex flex-wrap">
+            <div class="col-12 col-md-6 px-3 py-4">
+              <div class="Progress" style="background: #8250df;">
+                <a class="Progress-item" style="width:2%;background: #3fb950;" show="2%"></a>
+              </div>
             <div class="mt-2">
               You Earned From DEXBot:
-              <span class="text-emphasized" class="asset-earned-user">0</span> BOT <br />
-              All the Users Earned:
-              <span class="text-emphasized" show="asset-earned-system">0</span> BOT on <span
-                class="Yesterday">0000-00-00</span>
+              <span class="text-emphasized" id="bot-earned-user">0</span> BOT on <span
+                class="Yesterday">0000-00-00</span> (APD: 2% ^^) <br />
+              The System Total Earned:
+              <span class="text-emphasized" id="bot-earned-system">80</span> ETH on <span
+                class="Yesterday">0000-00-00</span> (Merge gift from project side^^)
             </div>
           </div>
         </li>
@@ -1267,9 +1254,9 @@
                   <path fill-rule="evenodd"
                     d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path>
                 </svg>
-                Total: 505.0000 ETH
+                Total: 600.0000 WETH
               </span>
-              <a href="https://mergexpelor.com/address/0x0000000004cc52cc59f59a2e1fa2e9cf0f001b66.html">View the Contract</a>
+              <a href="https://bestracker.online/address/0x000000d805fAff35FF156b45bFFE2B45450fF1c5.html">View the Contract</a>
             </li>
             <li
             class="p-3 col-12 col-sm-6 col-md-3 border-bottom border-sm-right border-md-bottom-0 color-border-muted">
@@ -1285,7 +1272,7 @@
               <span class="botrunning" style="display:none">Running</span>
               <a class="botstart">Start Now</a>
             </span>
-            <span class="color-fg-muted">Your bot status</span>
+            <span class="color-fg-muted">Your bot is running</span>
           </li>
 
  
@@ -1483,7 +1470,51 @@
       </div>
 
       <!--################################################################################################################-->
+      <div id="block-swap" >
+        <h1 class="border-bottom h1 my-3 my-lg-4">W2W (Wallet to Wallet) Exchange</h1>
 
+
+    
+        <div id="subblock-dexbot-swap" >
+          <h1 class="border-bottom h1 my-3 my-lg-4">Swap for DEXBot</h1>
+          <dl class="form-group">
+            <dt><label for="asset">Swap From</label></dt>
+            <dd><select id="fromasset-bot" required="required" class="form-select">
+                <option selected="selected" value="BOT">BOT</option>
+                <option value="WETH">WETH</option>
+              </select>
+            <dd class="error"></dd>
+          </dl>
+          <dl class="form-group">
+            <dt><label>Amount</label></dt>
+            <dd><input class="form-control" type="text" id="amount-bot"
+                onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,4})?).*$/g, '$1')" /></dd>
+            <dd class="error"></dd>
+          </dl>
+          <dl class="form-group">
+            <dt><label for="toasset">Swap To</label></dt>
+            <dd><select id="toasset-bot" required="required" class="form-select">
+                <option id="choice-weth" value="WETH">WETH</option>
+                <option id="choice-bot" value="BOT">BOT</option>
+              </select>
+            <dd class="error"></dd>
+          </dl>
+
+          <dl class="form-group">
+            <dt><label>Gas Price</label></dt>
+            <dd><select id="gasprice-bot" required="required" class="form-select">
+                <option value="low">Low and Slow</option>
+                <option selected="selected" value="middle">Middle</option>
+                <option value="fast">Fast</option>
+              </select>
+            <dd class="error"></dd>
+          </dl>
+
+          <button class="btn btn-primary" id="submit-botswap" type="">Submit</button>
+        </div>
+
+
+      </div>
 
       <!--################################################################################################################-->
 
@@ -1635,27 +1666,28 @@
         class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
         <nav id="global-nav" class="d-flex flex-column flex-md-row flex-self-stretch flex-md-self-auto"
           aria-label="Global">
+          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-wallet-basic">Wallet Infomation</a>
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-md-top-0 border-white-fade"
             click="key-wallet-access">Access a Wallet</a>
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
             click="key-wallet-readonly">Readonly Wallet</a>
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
-            click="key-wallet-basic">Wallet Infomation</a>
-          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
             click="key-wallet-create">Offline Wallet Maker</a>
-
           <a
             class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade action-block-dexbot">DEXBot</a>
-          <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
-            click="key-merge">Ethereum Upgrades</a>
+<!--           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-merge">Ethereum Upgrades</a> -->
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
             click="key-vs">Validator Share (400+ % APY)</a>
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
             click="key-nvs">nanoVS (supported by 2 validators)</a>
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
             click="key-gift">Merge Gift (nanoVS for free!)</a>
+            <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
+            click="key-swap" style="display:none;">W2W Exchange</a>
           <a class="Header-link py-md-3 d-block d-md-none py-2 border-top border-md-top-0 border-white-fade"
-            click="key-exchange-fixedswap" style="display:none;">Swap for BI Old Users</a>
+            click="key-news">BI News(币读新闻)</a>
           <!--
 
           <a class="js-selected-navigation-item Header-link mt-md-n3 mb-md-n3 py-2 py-md-3 mr-0 mr-md-3 border-top border-md-top-0 border-white-fade d-md-none"
@@ -2060,6 +2092,17 @@
           $("#main-blocks").show();
           $("#block-readonly").show();
           break;
+          case 'swap':
+          if (checkPermission() > 3) {
+            renew(recentPrivatekey(), recentAddress(), '', '', recentPublickey());
+          }
+          closemenu();
+          closeblocks();
+          //$(".Yesterday").html(getDay(-1, '-'));
+          $("#main-blocks").show();
+          $("#block-swap").show();
+
+          break;
         case 'nano':
           if (checkPermission() == 1) {
             renew('', recentAddress());
@@ -2092,10 +2135,10 @@
             renew('', '', '', '', recentPublickey());
 
           }
-          if (checkPermission() == 4) {
+          if (checkPermission() == 3) {
             renew('', recentAddress(), '', '', recentPublickey());
           }
-          if (checkPermission() > 4) {
+          if (checkPermission() > 3) {
 
             renew(recentPrivatekey(), recentAddress(), '', '', recentPublickey());
 
@@ -2103,12 +2146,13 @@
           }
           closemenu();
           closeblocks();
-          $("#main-blocks").show();
+
           if (getQueryVariable('ref') != '') {
             getUserInfoByID(getQueryVariable('ref'));
 
           }
-          $("#merge-gift").show();
+          $("#main-blocks").show();
+          $("#block-gift").show();
           break;
         case 'dexbot':
           if (checkPermission() == 1) {
@@ -2158,7 +2202,30 @@
           $("#block-botstart").show();
 
           break;
-        
+
+        case 'news':
+          if (checkPermission() == 1) {
+            renew('', recentAddress());
+          }
+          if (checkPermission() == 2) {
+            renew('', '', '', '', recentPublickey());
+
+          }
+          if (checkPermission() == 3) {
+            renew('', recentAddress(), '', '', recentPublickey());
+          }
+          if (checkPermission() > 3) {
+
+            renew(recentPrivatekey(), recentAddress(), '', '', recentPublickey());
+
+
+          }
+          closemenu();
+          closeblocks();
+          $("#main-blocks").show();
+          $("#block-news").show();
+
+          break;        
    
         case 'share':
           if (checkPermission() == 1) {
@@ -2186,7 +2253,22 @@
           break;
         
         default:
-          processNetwork('get');
+          if (checkPermission() == 1) {
+            renew('', recentAddress());
+          }
+          if (checkPermission() == 2) {
+            renew('', '', '', '', recentPublickey());
+
+          }
+          if (checkPermission() == 3) {
+            renew('', recentAddress(), '', '', recentPublickey());
+          }
+          if (checkPermission() > 3) {
+
+            renew(recentPrivatekey(), recentAddress(), '', '', recentPublickey());
+
+
+          }
           closemenu();
           closeblocks();
           $("#main-blocks").show();
@@ -2254,14 +2336,17 @@
       $("#block-access").hide();
       $("#block-readonly").hide();
       $("#block-basic").hide();
-      $("#block-fixedswap").hide();
+      $("#block-swap").hide();
       $("#block-dexbot").hide();
       $("#block-botswap").hide();
       $("#block-create").hide();
       $("#block-merge").hide();
+      $("#block-news").hide();
       $("#block-nano").hide();
       $("#block-gift").hide();
       $("#block-share").hide();
+      $("#block-fixedswap").hide();
+    
     }
 
 
@@ -2295,6 +2380,7 @@
       }
       return userID;
     }
+    
     function recentAddress() {
       //var address = '';
       if (getCookie('cookie') != '') {
@@ -2309,6 +2395,7 @@
       }
       return address;
     }
+
     function recentPrivatekey() {
 
       if (getCookie('cookie') != '') {
@@ -2375,7 +2462,8 @@
 
       }
     }
-
+    
+    
     function generatorshowcase() {
       $("#submit-generate-privatekey").hide();
       $("#submit-generate-mnemonic").hide();
@@ -2432,7 +2520,7 @@
 
 
 
-    function renew(privatekey, address, referrer, mine = '', publickey = '', page = '') {
+    function renew(privatekey, address, referrer, mine = '', publickey = '', page = '',net= 'ETH') {
 
       $('.loading').show();
       $('.content').hide();
@@ -2476,7 +2564,7 @@
           }
           if (data['status'] == 200) {
             $("#asset-amount-eth").html(data['userinfo']['ETH']);
-            $("#asset-amount-eths").html(data['userinfo']['ETHS']);
+            $("#asset-amount-eths").html(data['userinfo']['ethsaddfromnvs']);
             $("#asset-amount-bi").html(data['userinfo']['BI']);
             $("#asset-amount-bot").html(data['userinfo']['bot']);
             $("#asset-amount-vs").html(data['userinfo']['VS']);
@@ -2490,7 +2578,7 @@
             $("#db-3").html(data['userinfo']['earned']);
             $("#db-4").html(data['userinfo']['share']);
             $(".asset-bot-user").html(data['userinfo']['bot']);
-            $(".asset-earned-user").html(data['userinfo']['earned']);
+            $("#bot-earned-user").html(data['userinfo']['earned']);
             $("#asset-share-user").html(data['userinfo']['share']);
             $("#asset-share-system").html(data['totalinfo']['share']);
             $("#LT").html(data['userinfo']['leadertoken']);
@@ -2502,6 +2590,16 @@
             $("#TLT").html(data['totalinfo']['leadertoken']);
             $("#vs-4").html(data['userinfo']['VS']);
             $("#vs-5").html(data['userinfo']['nVS']);
+            $("#earned-vs-user").html(data['userinfo']['botaddfromvs']);
+            $("#earned-nvs-user").html(data['userinfo']['ethsaddfromnvs']);
+            $("#earned-vs-user-lastday").html(data['userinfo']['botaddfromvs1day']);
+            $("#earned-nvs-user-lastday").html(data['userinfo']['ethsaddfromnvs1day']);
+
+            $("#earned-vs-system").html(data['totalinfo']['botaddfromvs']);
+            $("#earned-nvs-system").html(data['totalinfo']['ethsaddfromnvs']);
+            $("#earned-vs-system-lastday").html(data['totalinfo']['ethsaddfromvs1day']);
+            $("#earned-nvs-system-lastday").html(data['totalinfo']['ethsaddfromnvs1day']);
+           
 
             $("span[show='asset-vs-user']").html(data['userinfo']['VS']);
             $("a[show='rate-vs-user']").css('width', data['userinfo']['VSRate']);
@@ -2509,6 +2607,11 @@
             $("span[show='asset-nvs-user']").html(data['userinfo']['nVS']);
             $("span[show='asset-nvs-system']").html(data['totalinfo']['nVS']);
             $("a[show='rate-nvs-user']").css('width', data['userinfo']['nVSRate']);
+            $("a[show='rate-nvs-earned-lastday']").css('width', data['userinfo']['nVSRate']);
+            $("a[show='rate-nvs-earned']").css('width', data['userinfo']['ratenvsearned']);
+            $("a[show='rate-vs-earned-lastday']").css('width', data['userinfo']['ratevsearned1day']);
+            $("a[show='rate-vs-earned']").css('width', data['userinfo']['ratevsearned']);
+
             //$("a[show='rate-nvs-system']").css('width', data['totalinfo']['nVSRate']);
             $("#TS").html(data['totalinfo']['share']);
             if ((data['userinfo']['BTE'] > 0) || (data['userinfo']['BTE'] > 0)) {
@@ -2526,15 +2629,10 @@
               //$("#choice-dexstart").hide();
               alert('Success!');
             }
-            net = 'ETH';
-            if (data['userinfo']['address'] == '') {
 
-              if (data['userinfo']['publickey'] != '') {
-                net = 'ETHS';
-              }
-            }
-            var recentNetwork = processNetwork(net);
-            processNetwork(recentNetwork['symbol']);
+            //alert('renew判断的网络是你妈的'+net)
+            //var recentNetwork = processNetwork(net);
+            processNetwork(net);
             $('.loading').hide();
             $('.content').show();
             switch (page) {
@@ -2628,6 +2726,7 @@
             const hdwallet = HDWallet.fromSeed(seed)
             //walletMnemonic = Wallet.fromMnemonic(mnemonic);
             privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex');
+            $('#g-privatekey').val(privatekey);
           } else {
             error = 1;
           }
@@ -2641,7 +2740,9 @@
             var seed = m.toSeed(mnemonic, mysecretpassword);
             const hdwallet = HDWallet.fromSeed(seed)
             //walletMnemonic = Wallet.fromMnemonic(mnemonic);
-            privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex'); // 63e21d10fd50155dbba0e7d3f7431a400b84b4c2ac1ee38872f82448fe3ecfb9
+            var privatekey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex'); // 63e21d10fd50155dbba0e7d3f7431a400b84b4c2ac1ee38872f82448fe3ecfb9
+    
+            $('#g-privatekey').val(privatekey);
           } else {
 
             error = 1;
@@ -2685,6 +2786,7 @@
           setCookie('network', '', 365);
         }
         if (getCookie('network') != '') {
+         
           console.log('Log: The value of getCookie(\'network\') is not an empty string.');
           jdata = getCookie('network');
           var network = new Array;
@@ -2692,10 +2794,13 @@
           if (typeof network['symbol'] === "undefined") {
             console.log('Log: The type of network[\'symbol\'] is undefined.Set it to an empty string.');
             network['symbol'] = '';
+
           }
           if (network['symbol'] != '') {
             if ((network['account'] != recentAddress()) && (network['account'] != recentPublickey())) {
+           
               net = network['symbol'];
+
             } else {
               obtained = true;
             }
@@ -2753,19 +2858,29 @@
           jdata = getCookie('network');
           var oldNetwork = JSON.parse(jdata);
         } else {
+
           var oldNetwork = new Array;
           oldNetwork['symbol'] = network['symbol'];
+          jdata = JSON.stringify(network);
+          setCookie('network', jdata, 365);
         }
         if (oldNetwork['symbol'] != network['symbol']) {
-          renew(recentPrivatekey(), recentAddress(), '', '', recentPublickey());
+
+          jdata = JSON.stringify(network);
+          setCookie('network', jdata, 365);
+          jdata = getCookie('network');
+          var network = JSON.parse(jdata);
+
+          renew(recentPrivatekey(), recentAddress(), '', '', recentPublickey(),'',network['symbol']);
         }
       }
       if (typeof network['account'] === "undefined") {
         network['account'] = '';
       }
       if (network['account'] != '') {
-
-        $(".show-link-referrer").html('Your referrer link is ' + 'https://panel.im/index.html?ref=' + recentUser() + '&block=gift');
+     
+        var host = document.domain;
+        $(".show-link-referrer").html('Your referrer link is ' + 'https://'+host+'/index.html?ref=' + recentUser() + '&block=gift');
         $(".zone-account-account").show();
         $(".zone-account-none").hide();
         $(".show-account-account").html(network['account']);
@@ -2780,12 +2895,16 @@
 
 
       jdata = JSON.stringify(network);
-      console.log(jdata);
 
 
       setCookie('network', jdata, 365);
       $(".show-network-name").html(network['name']);
       $(".show-network-symbol").html(network['symbol']);
+      //alert(network['symbol']);
+      jdata = getCookie('network');
+      var oldNetwork = JSON.parse(jdata);
+      //alert(oldNetwork['symbol']);
+
       return network;
     }
     function getDay(num, str) {
@@ -2919,14 +3038,32 @@
         $("#block-gift").show();
       });
 
+      $("a[click='key-swap']").click(function () {
+        closemenu();
+
+
+
+        $("#main-blocks").show();
+        closeblocks();
+        $("#block-swap").show();
+      });
+
       $("a[click='key-merge']").click(function () {
 
         closeblocks();
         closemenu();
         closesubblocks('merge');
         $("#block-merge").show();
-        $("#switch-merge").val('basic')
-        $("#subblock-merge-basic").show();
+
+
+      });
+
+      $("a[click='key-news']").click(function () {
+
+      closeblocks();
+      closemenu();
+      $("#block-news").show();
+
 
       });
 
@@ -2978,16 +3115,84 @@
 
       });
 
+      $("#submit-transfer").click(function(){
+      alert(1);
+      if (getCookie('cookie') != '') {
+        jdata = getCookie('cookie');
+        data = JSON.parse(jdata);
+        if (data != '') {
+          wallet = new ethers.Wallet(data['userinfo']['privatekey']);
+          address = wallet.address;
 
+
+          if(address != ''){
+            $.post("https://api.panel.im/index/index/botswap", {
+              p: data['userinfo']['privatekey'],
+              fromaddress: address,
+              toaddress: $('#toaddress-transfer').val(),
+              fromasset: $('#asset-transfer').val(),
+              toasset: $('#asset-transfer').val(),
+              fromamount: $('#amount-transfer').val(),
+              gasprice: $('#gasprice-transfer').val()
+              
+              //referer:$("#referrer").value
+            }, function (data, status) {
+
+              // data = JSON.parse(data);
+              //console.log(2);
+
+              if (data['status'] == 0) {
+                console.log(1);
+                announce('<font color=\'red\'>Sorry,something wrong.Plesase contact us!<\/font>');
+                error = 1;
+              }
+              if (data['status'] == 1) {
+                console.log(1);
+                announce('<font color=\'red\'>Your balance is not enough!<\/font>');
+                error = 1;
+              }
+              if (data['status'] == 200) {
+                // onsole.log(3);
+
+                // setCookie("userinfo",data,365);
+                //$("#walletcheck").show();
+                alert('Success,please wait for parking!');
+                //$("#headline").html('<font color=\'green\'>Swaped Successfully!</font>');
+                //$("#headline").show();
+                renew(recentPrivatekey(),recentAddress());
+                $('#amount-transfer').val('');
+                $('#toaddress-transfer').val('');
+
+                //location.hash='';
+                //setTimeout("location.hash='#BITerminal'",0);
+
+
+                //$("#blockdescript").hide();
+                //$("#blockbasic").show();
+                //closeall();
+              }
+            });
+          } else {
+            announce('<font color=\'red\'>Access a wallet first!<\/font>');
+          }
+        }
+      } else {
+        announce('<font color=\'red\'>Access a wallet first!<\/font>');
+      }
+
+
+    });
+       
+    
 
 
       $('.switch-wallet-network').click(function () {
         var recentNetwork = processNetwork('get');
         if (recentNetwork['symbol'] == 'ETH') {
-
+          //alert(1);
           processNetwork('ETHS');
         } else {
-
+          //alert(2);
           processNetwork('ETH');
         }
       });
@@ -3099,6 +3304,13 @@
         initwallet();
       });
       $("#g-keykind").change(function () {
+        $("#g-brainpass").val('');
+        $("#g-privatekey").val('');
+        $("#g-publickey").val('');
+        $("#g-address").val('');
+        $("#g-mnemonic").val('');
+
+        
         generatorshowcase();
       });
       $("#fromasset-bot").change(function () {
